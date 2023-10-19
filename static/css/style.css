@@ -1,12 +1,11 @@
 body {
-    background-color: #F9FAFC;
+    background-color: #CEEDDB;
 }
 
 .brand {
-    font-family: Lato, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #4A4A4F;
+    color: #544E61;
 }
 
 .red-o {
@@ -18,15 +17,16 @@ body {
 }
 
 .light-bg {
-    background-color: #fff;
+    background-color: #FFFFFF;
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: #67597A;
+    color: #FFFFFF;
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: #CEEDDB;
 }
 
 .card {
@@ -43,11 +43,12 @@ body {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #23BBBB;
+    background-color: #85BAA1;
+    color: #FFFFFF;
 }
 
 .author {
-    color: white;
+    color: #FFFFFF;
     margin: 4px;
     text-transform: uppercase;
 }
@@ -62,8 +63,8 @@ body {
 }
 
 .masthead-text {
-    background-color: #445261;
-    color: white;
+    background-color: #6E8894;
+    color: #FFFFFF;
     position: relative;
 }
 
@@ -79,7 +80,7 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background: #6E8894;
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -88,7 +89,7 @@ body {
 
 .post-link {
     text-decoration: none;
-    color: #445261;
+    color: #6E8894;
 }
 
 .post-link:hover,
@@ -107,24 +108,24 @@ body {
 }
 
 .btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
+    background-color: #85BAA1;
+    color: #FFFFFF;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    background-color: #FFFFFF;
+    color: #85BAA1;
 }
 
 .link {
-    color: #23BBBB;
+    color: #85BAA1;
     text-decoration: none;
 }
 
 .link:hover,
 .link:active {
-    color: #445261;
+    color: #6E8894;
     text-decoration: underline;
 }
 
