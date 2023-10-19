@@ -1,15 +1,16 @@
 body {
-    background-color: #CEEDDB;
+    background-color: #8eb897ff;
 }
 
 .brand {
+    font-family: Lato, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #544E61;
+    color: #040403ff;
 }
 
 .red-o {
-    color: #E84610;
+    color: #5b7553ff;
 }
 
 .thin {
@@ -17,21 +18,15 @@ body {
 }
 
 .light-bg {
-    background-color: #FFFFFF;
+    background-color: #c3e8bdff;
 }
 
 .dark-bg {
-    background-color: #67597A;
-    color: #FFFFFF;
+    background-color: #040403ff;
 }
 
 .main-bg {
-    background-color: #CEEDDB;
-}
-
-.card {
-    border: none;
-    background-color: transparent;
+    background-color: #8eb897ff;
 }
 
 .image-container {
@@ -43,12 +38,11 @@ body {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #85BAA1;
-    color: #FFFFFF;
+    background-color: #040403ff;
 }
 
 .author {
-    color: #FFFFFF;
+    color: #8eb897ff;
     margin: 4px;
     text-transform: uppercase;
 }
@@ -63,8 +57,8 @@ body {
 }
 
 .masthead-text {
-    background-color: #6E8894;
-    color: #FFFFFF;
+    background-color: #040403ff;
+    color: white;
     position: relative;
 }
 
@@ -80,7 +74,7 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #6E8894;
+    background: #040403ff;
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -89,12 +83,12 @@ body {
 
 .post-link {
     text-decoration: none;
-    color: #6E8894;
+    color: #8eb897ff;
 }
 
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    color: #5b7553ff;
 }
 
 .post-title {
@@ -108,36 +102,36 @@ body {
 }
 
 .btn-signup {
-    background-color: #85BAA1;
-    color: #FFFFFF;
+    background-color: #040403ff;
+    color: white;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #FFFFFF;
-    color: #85BAA1;
+    background-color: white;
+    color: #040403ff;
 }
 
 .link {
-    color: #85BAA1;
+    color: #040403ff;
     text-decoration: none;
 }
 
 .link:hover,
 .link:active {
-    color: #6E8894;
+    color: #5b7553ff;
     text-decoration: underline;
 }
 
 .btn-like {
-    color: #E84610;
+    color: #1C2419;
     border: none;
     background: transparent;
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #E84610;
+    color: #1C2419;
     background: transparent;
     border: none;
 }
