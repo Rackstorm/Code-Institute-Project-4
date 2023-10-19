@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% if user.userprofile.profile_picture %}{{ user.userprofile.profile_picture.url }}{% else %}/static/images/default-profile-image.png{% endif %}"
+                    class="card-img-top" alt="Profile Picture">
+                <div class="card-body">
+                    <h5 class="card-title">{{ user.username }}</h5>
+                    <p class="card-text">Member since: {{ user.date_joined|date:"F d, Y" }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h2>Liked Posts</h2>
+            <ul>
+                {% for post in user.userprofile.liked_recipes.all %}
+                <li><a href="{% url 'recipe_detail' post.slug %}">{{ post.title }}</a></li>
+                {% empty %}
+                <p>No liked posts yet.</p>
+                {% endfor %}
+            </ul>
+            <h2>Uploaded Posts</h2>
+            <ul>
+                {% for post in user.recipe_posts.all %}
+                <li><a href="{% url 'recipe_detail' post.slug %}">{{ post.title }}</a></li>
+                {% empty %}
+                <p>No uploaded posts yet.</p>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
