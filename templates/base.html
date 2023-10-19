@@ -44,7 +44,13 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Find Recipe</a>
+                    </li>
                     {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>
@@ -83,11 +89,12 @@
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
-        <p class="m-0 text-center text-white">Made by Code Instituters</p>
-        <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
+        <p class="m-0 text-center text-white">Code Institute - Project 4 | Pauline Nesti</p>
+        <p class="m-0 text-center text-white">
+            <i class="fab fa-facebook-square ms-3"></i>
             <i class="fab fa-twitter-square ms-3"></i>
             <i class="fab fa-instagram-square ms-3"></i>
-            <i class="fab fa-youtube-square ms-3"></i></p>
+            <i class="fab fa-github-square ms-3"></i></p>
     </footer>
     <script>
         setTimeout(function () {
