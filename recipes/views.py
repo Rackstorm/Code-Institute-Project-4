@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post
-from .forms import CommentForm
+from .forms import CommentForm, SearchForm
 
 
 class PostList(generic.ListView):
@@ -77,3 +77,18 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+class PostSearch(View):
+    def get(self, request, *args, **kwargs):
+        form = SearchForm()
+        return render(request, "post_search.html", {"form": form})
+
+    def post(self, request, *args, **kwargs):
+        form = SearchForm(request.POST)
+        results = []
+        if form.is_valid():
+            query = form.cleaned_data.get("query")
+            if query:
+                results = Post.objects.filter(title__icontains=query, status=1)
+        return render(request, "post_search.html", {"form": form, "results": results})
