@@ -1,9 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse
-
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post
-from .forms import CommentForm, SearchForm
+from .forms import CommentForm, SearchForm, PostCreateForm
 from django.db.models import Q
 
 
@@ -35,7 +34,7 @@ class PostDetail(View):
                 "comment_form": CommentForm()
             },
         )
-
+    
     def post(self, request, slug, *args, **kwargs):
 
         queryset = Post.objects.filter(status=1)
@@ -69,7 +68,7 @@ class PostDetail(View):
 
 
 class PostLike(View):
-
+    
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
@@ -85,14 +84,25 @@ class PostSearch(View):
         form = SearchForm()
         results = []
         query = request.GET.get("q")
-
         if query:
             search_terms = query.split()
             search_query = Q()
-
             for term in search_terms:
                 search_query |= Q(title__icontains=term, status=1)
                 search_query |= Q(content__icontains=term, status=1)
             results = Post.objects.filter(search_query).distinct()
-
         return render(request, "post_search.html", {"form": form, "results": results})
+
+
+class PostCreate(View):
+    def get(self, request, *args, **kwargs):
+        form = PostCreateForm()
+        return render(request, "post_create.html", {"form": form})
+
+    def post(self, request, *args, **kwargs):
+        form = PostCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+        return HttpResponseRedirect(reverse('home'))

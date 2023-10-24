@@ -16,7 +16,6 @@ class PostAdmin(SummernoteModelAdmin):
     get_category_title.short_description = 'Category'
 
 
-
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('name', 'body', 'post', 'created_on', 'approved')
