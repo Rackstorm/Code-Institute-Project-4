@@ -8,6 +8,7 @@ import os
 
 class CategoryModelTest(TestCase):
     def test_category_creation(self):
+        # Test if a category is created correctly and its string representation is as expected.
         category = Category.objects.create(title="Test Category")
         self.assertEqual(str(category), "Test Category")
 
@@ -30,6 +31,7 @@ class PostModelTest(TestCase):
         )
 
     def test_post_creation(self):
+        # Test if a post is created correctly with the expected attributes.
         self.assertEqual(self.post.title, "Test Post")
         self.assertEqual(self.post.slug, "test-post")
         self.assertEqual(self.post.author.username, "testuser")
@@ -58,6 +60,7 @@ class CommentModelTest(TestCase):
         )
 
     def test_comment_creation(self):
+        # Test if a comment is created correctly with the expected attributes.
         self.assertEqual(self.comment.name, "Test User")
         self.assertEqual(self.comment.email, "test@example.com")
         self.assertEqual(self.comment.body, "Test comment")
