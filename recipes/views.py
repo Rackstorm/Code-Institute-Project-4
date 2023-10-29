@@ -111,6 +111,4 @@ class PostCreate(View):
 @login_required
 def ProfileView(request):
     user_profile = Profile.objects.get(user=request.user)
-    liked_posts = user_profile.liked_posts.all()
-    print(f"Liked Posts: {liked_posts}")
     return render(request, 'profile.html', {'user_profile': user_profile})
