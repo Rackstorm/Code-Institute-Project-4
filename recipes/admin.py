@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment, Category
+from .models import Post, Comment, Category, Profile
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -31,3 +31,9 @@ class CommentAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('title',)
     search_fields = ('title',)
+
+
+admin.site.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'image')
+    search_fields = ('user', 'image')

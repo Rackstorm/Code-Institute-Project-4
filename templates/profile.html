@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="content-section">
+    <div class="media">
+        <img class="rounded-circle account-img" src="{{ user_profile.profile_picture.url }}" />
+        <div class="media-body">
+            <h2 class="account-heading">{{ user.username }}</h2>
+            <p class="text-secondary">{{ user.email }}</p>
+            <p>{{ user.profile.bio }}</p>
+        </div>
+    </div>
+
+    <h3>Liked Posts:</h3>
+    <ul>
+        {% for post in user_profile.users_who_liked.all %}
+        <li><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+
+
+
+
+    <h4>Debugging Information:</h4>
+    {{ user }}
+    {{ user.profile }}
+
+
+    <!-- FORM HERE -->
+</div>
+{% endblock content %}

@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse
+from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post
+from .models import Post, Comment, Profile
 from .forms import CommentForm, SearchForm, PostCreateForm
 from django.db.models import Q
 
@@ -105,3 +106,11 @@ class PostCreate(View):
             post.author = request.user
             post.save()
         return HttpResponseRedirect(reverse('home'))
+
+
+@login_required
+def ProfileView(request):
+    user_profile = Profile.objects.get(user=request.user)
+    liked_posts = user_profile.liked_posts.all()
+    print(f"Liked Posts: {liked_posts}")
+    return render(request, 'profile.html', {'user_profile': user_profile})
