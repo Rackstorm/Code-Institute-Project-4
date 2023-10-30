@@ -12,17 +12,23 @@ body {
     color: #fff;
 }
 
+.container {
+    overflow: visible;
+    text-wrap: wrap;
+    padding-top: 10px;
+}
+
 .navbar {
     background-image: linear-gradient(#cc0044, #80002a);
     color: #fff;
 }
 
-.navbar-light .navbar-nav .nav-link {
+.navbar .navbar-brand {
     color: #fff;
 }
 
-.container {
-    padding-top: 10px;
+.navbar-light .navbar-nav .nav-link {
+    color: #fff;
 }
 
 .account-image {
