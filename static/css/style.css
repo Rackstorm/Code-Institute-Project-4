@@ -21,6 +21,13 @@ body {
     color: #fff;
 }
 
+.container {
+    padding-top: 10px;
+}
+
+.account-image {
+    margin: 0 auto;
+}
 
 .h1 {
     font-family: 'Poppins', sans-serif;
@@ -39,6 +46,18 @@ body {
         font-size: 18px;
     }
 
+}
+
+.card {
+    padding: 1.5em 1.5em 1.5em;
+    border-radius: 2em;
+    text-align: left;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+.card-title {
+    font-weight: 700;
+    font-size: 1.5em;
 }
 
 .red-o {
@@ -83,37 +102,27 @@ body {
 }
 
 .masthead {
-    margin-top: 10px;
+    margin-top: 0px;
     overflow: hidden;
     position: relative;
     display: inline-block;
     height: 33vh;
     width: 100%;
+    background-color: #ffe6ed;
 }
 
 .masthead-text {
     background-color: #ffe6ed;
-    color: white;
+    color: #80002a;
     position: relative;
 }
 
 .masthead-image {
     position: relative;
     overflow: hidden;
-}
-
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #040403ff;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
+    border-radius: 50%;
+    background-color: #ffe6ed;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .post-link {
@@ -133,7 +142,7 @@ body {
 
 .post-subtitle {
     margin-left: 5%;
-    color: lightgray;
+    color: darkgray;
 }
 
 .btn-signup {
