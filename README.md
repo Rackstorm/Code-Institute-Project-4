@@ -70,7 +70,19 @@ I have done the following:
 
 ## Bugs
 
--
+- TABLE AND LIST NOT FINALIZED.
+
+## Testing
+
+### Manual Testing
+- Registering user
+- Creating Recipes (NOT FUNCTIONING)
+- Saving Recipes
+
+### Django Testing
+- test_views.py
+- test_models.py
+- test_forms.py
 
 ## Validator Testing
 
