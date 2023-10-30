@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.http import HttpResponseRedirect
@@ -112,3 +112,4 @@ class PostCreate(View):
 def ProfileView(request):
     user_profile = Profile.objects.get(user=request.user)
     return render(request, 'profile.html', {'user_profile': user_profile})
+

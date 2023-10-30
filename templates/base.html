@@ -32,7 +32,7 @@
 
     <!-- Navigation -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-gradient">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}">
                 <h1>The Recipe Exchange
@@ -45,10 +45,10 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'post_search' %}">Find Recipe</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'post_search' %}">Find Recipe</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
@@ -93,7 +93,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 dark-bg">
+    <footer class="footer mt-auto py-3">
         <p class="m-0 text-center text-white">Code Institute - Project 4 | Pauline Nesti</p>
         <p class="m-0 text-center text-white">
             <i class="fab fa-facebook-square ms-3"></i>

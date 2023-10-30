@@ -55,7 +55,7 @@ class Comment(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
-    profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
+    profile_picture = CloudinaryField('image', blank=True, null=True)
     liked_posts = models.ManyToManyField(Post, related_name='liked_posts', blank=True)
 
     def save(self, *args, **kwargs):
