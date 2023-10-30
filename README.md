@@ -1,29 +1,48 @@
 # The Recipe Exchange
+** This project is not finalized and will have to be resubmitted **
+
+![Mockup](/static/images/readme_files/mockup.png)
 
 The Recipe Exchange is a web application designed for users to discover, share, and exchange their favorite recipes. Whether you're a cooking enthusiast or simply looking for meal ideas, The Recipe Exchange offers a platform to connect with others and explore a variety of recipes.
+
+
 
 ## Pages
 
 ### Home
 - The landing page where you can explore featured recipes and discover new culinary ideas.
 
+![LandingPage](/static/images/readme_files/landingpage.png)
+
 ### Login
 - Log in to your account to access your profile and create or manage your recipes.
+
+![Login](/static/images/readme_files/signin.png)
 
 ### Register
 - Create a new account and join the Recipe Exchange community.
 
+![Register](/static/images/readme_files/register.png)
+
 ### Find Recipe
 - Search for recipes based on keywords, ingredients, or categories.
+
+![SearchRecipe](/static/images/readme_files/search.png)
 
 ### Create Recipe
 - Share your favorite recipes with the community by creating your own.
 
+NOT WORKING YET.
+
 ### Profile
 - View and manage your profile, including your posted recipes and account settings.
 
+NO IMAGE YET.
+
 ### Logout
 - Log out of your account for security and privacy.
+
+NO IMAGE YET.
 
 ## Technologies
 
