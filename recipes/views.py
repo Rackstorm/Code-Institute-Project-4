@@ -3,10 +3,13 @@ from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, Comment, Profile
-from .forms import CommentForm, SearchForm, PostCreateForm
+from .forms import CommentForm, SearchForm, PostCreateForm, CustomSignupForm
+from allauth.account.views import SignupView
 from django.db.models import Q
 
-
+class CustomSignupView(SignupView):
+    form_class = CustomSignupForm
+    
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")

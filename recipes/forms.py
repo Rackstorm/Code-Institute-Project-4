@@ -1,5 +1,6 @@
-from .models import Comment, Post, Category, Profile
 from django import forms
+from allauth.account.forms import SignupForm
+from .models import Comment, Post, Category, Profile
 
 
 class CommentForm(forms.ModelForm):
@@ -26,3 +27,12 @@ class PostCreateForm(forms.ModelForm):
             'category': forms.Select(attrs={'class': 'form-control'}),
             'status': forms.Select(attrs={'class': 'form-control'}), }
 
+class CustomSignupForm(SignupForm):
+    bio = forms.CharField(max_length=500, required=False, widget=forms.Textarea(attrs={'rows': 4, 'cols': 40}))
+    profile_picture = forms.ImageField(required=False)
+
+    def save(self, request, user):
+        user.profile.bio = self.cleaned_data.get('bio', '')
+        user.profile.profile_picture = self.cleaned_data.get('profile_picture', None)
+        user.profile.save()
+        return user
