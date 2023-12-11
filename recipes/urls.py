@@ -10,4 +10,5 @@ urlpatterns = [
     path('<slug:slug>/like/', views.PostLike.as_view(), name='post_like'),
     path('create/', views.PostCreate.as_view(), name='post_create'),
     path('signup/', CustomSignupView.as_view(), name='account_signup'),
+
 ]

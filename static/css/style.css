@@ -162,6 +162,77 @@ body {
     color: #040403ff;
 }
 
+/* Signup Form Styles */
+form.signup {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form.signup h1 {
+    text-align: center;
+    color: #80002a;
+}
+
+form.signup p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+form.signup button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #80002a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+form.signup button:hover {
+    background-color: #5b7553ff;
+}
+
+form.signup input[type="text"],
+form.signup input[type="email"],
+form.signup input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+form.signup label {
+    color: #80002a;
+    font-weight: 600;
+}
+
+form.signup textarea,
+form.signup input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 600px) {
+    form.signup {
+        width: 90%;
+    }
+}
+
+
 .link {
     color: #ffffff;
     text-decoration: none;
