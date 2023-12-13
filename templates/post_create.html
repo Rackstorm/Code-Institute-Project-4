@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
 <div class="container">
@@ -7,6 +8,9 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy }}
+        <link rel="stylesheet" href="{% static 'django_summernote/summernote-bs4.css' %}">
+        <script src="{% static 'django_summernote/summernote-bs4.js' %}"></script>
+        {{ form.media }}
         <button type="submit" class="btn btn-primary">Create Recipe</button>
     </form>
 </div>
