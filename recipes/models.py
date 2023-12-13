@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from autoslug import AutoSlugField
 from cloudinary.models import CloudinaryField
 
 
@@ -15,7 +16,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = AutoSlugField(populate_from='title', unique=True, always_update=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipe_posts")
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name="posts")
     featured_image = CloudinaryField('image', default='placeholder')
