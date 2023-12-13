@@ -1,5 +1,6 @@
 from django import forms
 from allauth.account.forms import SignupForm
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 from .models import Comment, Post, Category, Profile
 
 
@@ -23,9 +24,12 @@ class PostCreateForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'featured_image': forms.FileInput(attrs={'class': 'form-control'}),
             'excerpt': forms.Textarea(attrs={'class': 'form-control'}),
-            'content': forms.Textarea(attrs={'class': 'form-control'}),
+            'content': SummernoteWidget(),
             'category': forms.Select(attrs={'class': 'form-control'}),
-            'status': forms.Select(attrs={'class': 'form-control'}), }
+            'status': forms.Select(attrs={'class': 'form-control'}),
+        }
+
+
 
 class CustomSignupForm(SignupForm):
     bio = forms.CharField(max_length=500, required=False, widget=forms.Textarea(attrs={'rows': 4, 'cols': 40}))
@@ -36,3 +40,8 @@ class CustomSignupForm(SignupForm):
         user.profile.profile_picture = self.cleaned_data.get('profile_picture', None)
         user.profile.save()
         return user
+
+class ProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['bio', 'profile_picture']
