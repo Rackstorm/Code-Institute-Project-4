@@ -1,6 +1,6 @@
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
-from .models import Post, Category, Comment
+from .models import Post, Category, Comment, Profile
 from django.contrib.auth.models import User
 from django.core.files.images import ImageFile
 import os
@@ -38,6 +38,12 @@ class PostModelTest(TestCase):
         self.assertEqual(str(self.post.category), "Test Category")
         self.assertEqual(self.post.status, 1)
 
+    def test_number_of_likes(self):
+        # Test if the number of likes for a post is correctly calculated.
+        user = User.objects.create_user('testuser2', password='testpassword')
+        self.post.likes.add(user)
+        self.assertEqual(self.post.number_of_likes(), 1)
+
 
 class CommentModelTest(TestCase):
     def setUp(self):
@@ -66,3 +72,30 @@ class CommentModelTest(TestCase):
         self.assertEqual(self.comment.body, "Test comment")
         self.assertEqual(self.comment.approved, False)
         self.assertEqual(str(self.comment.post), "Test Post")
+
+
+class ProfileModelTest(TestCase):
+    def setUp(self):
+        user = User.objects.create_user('testuser', password='testpassword')
+        self.profile = Profile.objects.create(
+            user=user,
+            bio="Test bio",
+            profile_picture=SimpleUploadedFile(
+                "test_image.jpg",
+                content=open(
+                    os.path.join(os.path.dirname(__file__), '../static/images/fresh-organic-vegetables-4.jpg'),
+                    'rb'
+                ).read(),
+                content_type="image/jpeg"
+            )
+        )
+
+    def test_profile_creation(self):
+        # Test if a profile is created correctly with the expected attributes.
+        self.assertEqual(str(self.profile.user.profile), "Test User's Profile")
+        self.assertEqual(self.profile.bio, "Test bio")
+        self.assertIsNotNone(self.profile.profile_picture)
+
+    def test_profile_str_representation(self):
+        # Test if the string representation of a profile is as expected.
+        self.assertEqual(str(self.profile), "Test User's Profile")
