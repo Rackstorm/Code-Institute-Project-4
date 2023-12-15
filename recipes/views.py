@@ -112,11 +112,25 @@ def PostCreateView(request):
 
     return render(request, 'post_create.html', {'form': form})
 
+@login_required
+def edit_post(request, slug):
+    post = get_object_or_404(Post, slug=slug, author=request.user)
 
+    if request.method == 'POST':
+        form = PostCreateForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('post_detail', slug=post.slug)
+    else:
+        form = PostCreateForm(instance=post)
+
+    return render(request, 'edit_post.html', {'form': form, 'post': post})
 
 @login_required
 def ProfileView(request):
     user_profile = Profile.objects.get(user=request.user)
+    liked_posts = user_profile.liked_posts.all()
+    user_posts = Post.objects.filter(author=request.user)
     return render(request, 'profile.html', {'user_profile': user_profile})
 
 
