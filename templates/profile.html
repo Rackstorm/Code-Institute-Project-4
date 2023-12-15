@@ -24,10 +24,18 @@
 
             <h3>Liked Posts:</h3>
             <ul>
-                {% for post in user_profile.users_who_liked.all %}
+                {% for post in user_profile.liked_posts.all %}
                 <li><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></li>
                 {% endfor %}
             </ul>
+
+            <h3>My Recipes:</h3>
+            <ul>
+                {% for post in user_posts %}
+                <li><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></li>
+                {% endfor %}
+            </ul>
+
 
         </div>
     </div>
