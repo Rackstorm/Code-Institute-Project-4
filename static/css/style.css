@@ -162,8 +162,9 @@ body {
     color: #040403ff;
 }
 
-/* Signup Form Styles */
-form.signup {
+/* Form Styles */
+form.signup,
+form.login {
     max-width: 400px;
     margin: 0 auto;
     background-color: #fff;
@@ -172,17 +173,20 @@ form.signup {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-form.signup h1 {
+form.signup h1,
+form.login h1 {
     text-align: center;
     color: #80002a;
 }
 
-form.signup p {
+form.signup p,
+form.login p {
     text-align: center;
     margin-top: 10px;
 }
 
-form.signup button {
+form.signup button,
+form.login button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -194,13 +198,16 @@ form.signup button {
     margin-top: 15px;
 }
 
-form.signup button:hover {
+form.signup button:hover,
+form.login button:hover {
     background-color: #5b7553ff;
 }
 
 form.signup input[type="text"],
 form.signup input[type="email"],
-form.signup input[type="password"] {
+form.signup input[type="password"],
+form.login input[type="text"],
+form.login input[type="password"] {
     width: 100%;
     padding: 10px;
     margin: 8px 0;
@@ -210,21 +217,12 @@ form.signup input[type="password"] {
     border-radius: 5px;
 }
 
-form.signup label {
+form.signup label,
+form.login label {
     color: #80002a;
     font-weight: 600;
 }
 
-form.signup textarea,
-form.signup input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    border-radius: 5px;
-}
 
 @media screen and (max-width: 600px) {
     form.signup {
