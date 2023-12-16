@@ -8,12 +8,22 @@ class PostAdmin(SummernoteModelAdmin):
     list_display = ('title', 'slug', 'status', 'created_on', 'get_category_title')
     search_fields = ['title', 'content', 'category__title']
     list_filter = ('status', 'created_on')
-    prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
+
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'slug', 'author', 'category', 'featured_image', 'excerpt', 'content', 'status', 'likes'),
+        }),
+    )
+
+    readonly_fields = ('slug',)
 
     def get_category_title(self, obj):
         return obj.category.title if obj.category else ''
+    
     get_category_title.short_description = 'Category'
+
+
 
 
 @admin.register(Comment)
