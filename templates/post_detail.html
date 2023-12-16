@@ -31,6 +31,11 @@
                 <a href="{% url 'edit_post' post.slug %}" class="btn btn-secondary">Edit</a>
                 {% endif %}
 
+                {% if user.is_authenticated and user == post.author %}
+                <a href="{% url 'delete_post' post.slug %}" class="btn btn-secondary">Delete Post</a>
+                {% endif %}
+
+
                 <p class="card-text ">
                     {{ post.content | safe }}
                 </p>
