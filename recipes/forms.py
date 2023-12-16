@@ -23,7 +23,7 @@ class PostCreateForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'featured_image': forms.FileInput(attrs={'class': 'form-control'}),
-            'excerpt': forms.Textarea(attrs={'class': 'form-control'}),
+            'excerpt': forms.TextInput(attrs={'class': 'form-control'}),
             'content': SummernoteWidget(),
             'category': forms.Select(attrs={'class': 'form-control'}),
             'status': forms.Select(attrs={'class': 'form-control'}),
