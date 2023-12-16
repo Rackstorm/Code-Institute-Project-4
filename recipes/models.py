@@ -34,6 +34,11 @@ class Post(models.Model):
 
     def number_of_likes(self):
         return self.likes.count()
+    
+    def delete_post(self):
+        self.delete()
+
+        
 
 class Comment(models.Model):
     """Represents a comment on a blog post."""

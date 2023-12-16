@@ -151,3 +151,13 @@ def edit_profile(request):
         form = ProfileEditForm(instance=user_profile)
 
     return render(request, 'edit_profile.html', {'form': form})
+
+@login_required
+def delete_post(request, slug):
+    post = get_object_or_404(Post, slug=slug, author=request.user)
+
+    if request.method == 'POST':
+        post.delete_post()
+        return redirect('home')
+    
+    return render(request, 'delete_post.html', {'post': post})

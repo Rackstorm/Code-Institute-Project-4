@@ -10,4 +10,5 @@ urlpatterns = [
     path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
     path('<slug:slug>/like/', views.PostLike.as_view(), name='post_like'),
     path('<slug:slug>/edit/', views.edit_post, name='edit_post'),
+    path('<slug:slug>/delete/', views.delete_post, name='delete_post'),
 ]
