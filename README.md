@@ -149,6 +149,7 @@ The project is deployed on Heroku, a cloud platform for hosting web applications
 | **Slug Generation:** The manual process of creating slugs was time-consuming. | Utilized the `AutoSlugField` provided by the `autoslug` package in the `Post` model to automate the generation of slugs based on the post title. This not only streamlined the workflow but also ensured consistent and SEO-friendly URLs for each post. |
 | **Search Functionality:** Needed a search functionality for recipes. | Implemented a search form (`SearchForm`) and a corresponding view (`PostSearch`) to filter recipes based on search terms. Enhanced user experience by allowing users to find relevant recipes efficiently. |
 | **Image Upload Issue:** Difficulty with image upload in the `PostCreateForm`. | Configured the `PostCreateForm` to handle file inputs for image uploads. Added appropriate widget attributes to the form fields related to file uploads. Ensured that the `MEDIA_ROOT` and `MEDIA_URL` settings in Django were correctly configured to handle uploaded media files. |
+| **Pylint Error (Post and Profile Classes):** `Class 'Post' has no 'objects' member` and `Class 'Profile' has no 'objects' member` | Ignored the pylint errors related to the absence of `objects` member for the `Post` and `Profile` classes. These errors are due to the use of custom managers in Django models, and the issue has already been defined in the `models.py` file. The code is functioning as intended, and these errors do not impact the application's behavior. |
 
 
 

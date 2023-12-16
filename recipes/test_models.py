@@ -1,19 +1,20 @@
+""" Test cases for the models of the recipes app. """
+import os
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
-from .models import Post, Category, Comment, Profile
 from django.contrib.auth.models import User
-from django.core.files.images import ImageFile
-import os
-
+from .models import Post, Category, Comment, Profile
 
 class CategoryModelTest(TestCase):
+    """ Test case for the Category model. """
     def test_category_creation(self):
-        # Test if a category is created correctly and its string representation is as expected.
+        """ Test if a category is created correctly with the expected attributes. """
         category = Category.objects.create(title="Test Category")
         self.assertEqual(str(category), "Test Category")
 
 
 class PostModelTest(TestCase):
+    """ Test case for the Post model. """
     def setUp(self):
         user = User.objects.create_user('testuser', password='testpassword')
         category = Category.objects.create(title="Test Category")
@@ -31,7 +32,7 @@ class PostModelTest(TestCase):
         )
 
     def test_post_creation(self):
-        # Test if a post is created correctly with the expected attributes.
+        """ Test if a post is created correctly with the expected attributes. """
         self.assertEqual(self.post.title, "Test Post")
         self.assertEqual(self.post.slug, "test-post")
         self.assertEqual(self.post.author.username, "testuser")
@@ -39,13 +40,14 @@ class PostModelTest(TestCase):
         self.assertEqual(self.post.status, 1)
 
     def test_number_of_likes(self):
-        # Test if the number of likes for a post is correctly calculated.
+        """ Test if the number of likes for a post is correctly calculated. """
         user = User.objects.create_user('testuser2', password='testpassword')
         self.post.likes.add(user)
         self.assertEqual(self.post.number_of_likes(), 1)
 
 
 class CommentModelTest(TestCase):
+    """ Test case for the Comment model. """
     def setUp(self):
         user = User.objects.create_user('testuser', password='testpassword')
         category = Category.objects.create(title="Test Category")
@@ -66,7 +68,7 @@ class CommentModelTest(TestCase):
         )
 
     def test_comment_creation(self):
-        # Test if a comment is created correctly with the expected attributes.
+        """  Test if a comment is created correctly with the expected attributes. """
         self.assertEqual(self.comment.name, "Test User")
         self.assertEqual(self.comment.email, "test@example.com")
         self.assertEqual(self.comment.body, "Test comment")
@@ -75,6 +77,7 @@ class CommentModelTest(TestCase):
 
 
 class ProfileModelTest(TestCase):
+    """ Test case for the Profile model. """
     def setUp(self):
         user = User.objects.create_user('testuser', password='testpassword')
         self.profile = Profile.objects.create(
@@ -91,11 +94,11 @@ class ProfileModelTest(TestCase):
         )
 
     def test_profile_creation(self):
-        # Test if a profile is created correctly with the expected attributes.
+        """ Test if a profile is created correctly with the expected attributes. """
         self.assertEqual(str(self.profile.user.profile), "Test User's Profile")
         self.assertEqual(self.profile.bio, "Test bio")
         self.assertIsNotNone(self.profile.profile_picture)
 
     def test_profile_str_representation(self):
-        # Test if the string representation of a profile is as expected.
+        """ Test if the string representation of a profile is as expected. """
         self.assertEqual(str(self.profile), "Test User's Profile")

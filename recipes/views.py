@@ -1,27 +1,29 @@
+""" This module contains the views for the recipes app. """
+from allauth.account.views import SignupView
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post, Comment, Profile
-from .forms import CommentForm, SearchForm, PostCreateForm, CustomSignupForm, ProfileEditForm
-from allauth.account.views import SignupView
 from django.db.models import Q
+from .models import Post, Profile
+from .forms import CommentForm, SearchForm, PostCreateForm, CustomSignupForm, ProfileEditForm
 
-# Custom SignupView that uses your CustomSignupForm
+
 class CustomSignupView(SignupView):
+    """ Custom SignupView that uses the CustomSignupForm. """
     form_class = CustomSignupForm
 
-# Generic ListView for displaying a list of published posts
 class PostList(generic.ListView):
+    """ Generic ListView for displaying a list of published posts."""
     model = Post
     queryset = Post.objects.filter(status=1).order_by("-created_on")
     template_name = "index.html"
     paginate_by = 6
 
-# View for displaying post details, handling comments, and likes
 class PostDetail(View):
+    """ View for displaying post details, handling comments, and likes."""
     def get(self, request, slug, *args, **kwargs):
-        # Retrieve the post based on the slug from the URL
+        """ Handles GET requests for post details."""
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
 
@@ -31,7 +33,7 @@ class PostDetail(View):
         if request.user.is_authenticated and post.likes.filter(id=request.user.id).exists():
             liked = True
 
-        # Render the post detail page with relevant information
+        # Render the post detail page with relevant informatio """
         return render(
             request,
             "post_detail.html",
@@ -46,7 +48,7 @@ class PostDetail(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
-        # Similar to the get method, but handles the submission of comments
+        """ Handles POST requests for submitting comments."""
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by("-created_on")
@@ -54,7 +56,6 @@ class PostDetail(View):
         if request.user.is_authenticated and post.likes.filter(id=request.user.id).exists():
             liked = True
 
-        # Process the submitted comment
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
@@ -65,7 +66,6 @@ class PostDetail(View):
         else:
             comment_form = CommentForm()
 
-        # Render the post detail page with updated information
         return render(
             request,
             "post_detail.html",
@@ -79,23 +79,22 @@ class PostDetail(View):
             },
         )
 
-# View for handling post likes
 class PostLike(View):
+    """ View for handling post likes. """
     def post(self, request, slug, *args, **kwargs):
-        # Toggle the like status for the current user on the specified post
+        """ Toggle the like status for the current user on the specified post """
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)
         else:
             post.likes.add(request.user)
 
-        # Redirect back to the post detail page
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
-# View for handling post searches
 class PostSearch(View):
-    def get(self, request, *args, **kwargs):
-        # Display the search form and search results based on the user's input
+    """ View for handling post searches. """
+    def get(self, request):
+        """ Handles GET requests for displaying the search form and results."""
         form = SearchForm()
         results = []
         query = request.GET.get("q")
@@ -108,11 +107,10 @@ class PostSearch(View):
             results = Post.objects.filter(search_query).distinct()
         return render(request, "post_search.html", {"form": form, "results": results})
 
-# View for creating new posts (requires login)
 @login_required
 def PostCreateView(request):
+    """ View for creating new posts (requires login)."""
     if request.method == 'POST':
-        # Handle the form submission to create a new post
         form = PostCreateForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
@@ -120,15 +118,13 @@ def PostCreateView(request):
             post.save()
             return HttpResponseRedirect(reverse('home'))
     else:
-        # Display the form for creating a new post
         form = PostCreateForm()
 
     return render(request, 'post_create.html', {'form': form})
 
-# View for editing an existing post (requires login)
 @login_required
-def edit_post(request, slug):
-    # Retrieve the post to be edited and handle the form submission for editing
+def edit_post(request, slug, *args, **kwargs):
+    """ View for editing an existing post (requires login). """
     post = get_object_or_404(Post, slug=slug, author=request.user)
 
     if request.method == 'POST':
@@ -139,46 +135,39 @@ def edit_post(request, slug):
     else:
         form = PostCreateForm(instance=post)
 
-    # Display the form for editing the post
     return render(request, 'edit_post.html', {'form': form, 'post': post})
 
-# View for displaying user profile information
 @login_required
 def ProfileView(request):
-    # Retrieve user profile information, including liked and authored posts
+    """ View for displaying user profile information. """
     user_profile = Profile.objects.get(user=request.user)
     liked_posts = user_profile.liked_posts.all()
     user_posts = request.user.recipe_posts.all()
-    
-    # Render the user profile page with relevant information
+
     return render(request, 'profile.html', {'user_profile': user_profile, 'liked_posts': liked_posts, 'user_posts': user_posts})
 
-# View for editing user profile information
 @login_required
 def edit_profile(request):
+    """ View for editing user profile information."""
     user_profile = Profile.objects.get(user=request.user)
 
     if request.method == 'POST':
-        # Handle the form submission for editing user profile information
         form = ProfileEditForm(request.POST, request.FILES, instance=user_profile)
         if form.is_valid():
             form.save()
             return redirect('profile')
     else:
-        # Display the form for editing user profile information
         form = ProfileEditForm(instance=user_profile)
 
     return render(request, 'edit_profile.html', {'form': form})
 
-# View for deleting a post (requires login)
 @login_required
-def delete_post(request, slug):
-    # Retrieve the post to be deleted and handle the form submission for deletion
+def delete_post(request, slug, *args, **kwargs):
+    """ View for deleting a post (requires login)."""
     post = get_object_or_404(Post, slug=slug, author=request.user)
 
     if request.method == 'POST':
         post.delete_post()
         return redirect('home')
-    
-    # Display the confirmation page for deleting the post
+
     return render(request, 'delete_post.html', {'post': post})
