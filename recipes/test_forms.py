@@ -15,7 +15,7 @@ class CommentFormTest(TestCase):
         form = CommentForm(data=form_data)
         self.assertFalse(form.is_valid())
 
-    # Add more tests as needed for CommentForm...
+
 
 class SearchFormTest(TestCase):
     # Testing the validity when provided with a valid "search" field and assert that the form is valid.
@@ -30,7 +30,6 @@ class SearchFormTest(TestCase):
         form = SearchForm(data=form_data)
         self.assertFalse(form.is_valid())
 
-    # Add more tests as needed for SearchForm...
 
 class PostCreateFormTest(TestCase):
     # Testing the validity when provided with valid data and assert that the form is valid.
