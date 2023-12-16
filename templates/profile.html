@@ -18,23 +18,27 @@
                     <button class="btn btn-primary" onclick="location.href='{% url 'edit_profile' %}'">Edit
                         Profile</button>
 
+
                 </div>
             </div>
             <hr>
 
             <h3>Liked Posts:</h3>
             <ul>
-                {% for post in user_profile.liked_posts.all %}
+                {% for post in liked_posts %}
                 <li><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></li>
                 {% endfor %}
             </ul>
 
-            <h3>My Recipes:</h3>
+            <h3>Recipes added by me:</h3>
             <ul>
                 {% for post in user_posts %}
                 <li><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></li>
                 {% endfor %}
             </ul>
+
+
+
 
 
         </div>
