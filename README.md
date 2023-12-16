@@ -27,15 +27,62 @@ The Recipe Exchange is a web application designed for users to discover, share, 
 ## User Goals
 ## Site Owner Goals
 ## Target Audience
+
 ## User Stories
 
+* As a user, I want to create an account with a unique username and password, so I can start sharing and managing my recipes.
+* As a registered user, I want to log in and out of my account to access my saved recipes and submit new recipes.
+* As a user, I want to upload a recipe with a title, ingredients, steps, and an optional photo.
+* As a user, I want to edit my existing recipes, so I can update them with new information or corrections.
+* As a user, I want to delete my recipes if I no longer want them to be available on the platform.
+* As a user, I want to browse and search for recipes submitted by other users.
+* As a user, I want to like and save recipes I find interesting, so I can access them later in my saved recipes.
+* As a user, I want to leave comments on recipes to ask questions, provide feedback, or share my thoughts.
+* As a user, I want to view my profile, where I can see the recipes I've submitted, my liked recipes, and saved recipes.
+* As an admin, I want the ability to moderate content, including the ability to remove inappropriate or spammy recipes and comments.
+
+
 # Planning
-## Agile methodology
+
+## 1. Strategy:
+- **Project Goals:** Define objectives for sharing, discovering, and managing recipes.
+- **User-Centric Approach:** Understand the needs of users interested in cooking.
+- **Engagement Strategy:** Encourage actions like liking recipes and fostering a sense of community.
+
+## 2. Scope:
+- **Feature Set:** Clearly define features including recipe management and user profiles.
+- **User Restrictions:** Establish limitations on modifying or deleting posts.
+- **Content Guidelines:** Set quality standards for recipe content.
+
+## 3. Structure:
+- **Information Architecture:** Organize recipes and profiles logically.
+- **Intuitive Navigation:** Create user-friendly menus for easy exploration.
+- **Workflow Design:** Design clear workflows for recipe actions.
+
+## 4. Skeleton:
+- **Wireframes:** Develop visual layouts emphasizing simplicity.
+- **Prototypes:** Create interactive models to test user interactions.
+- **User Feedback:** Gather input to refine wireframes and prototypes.
+
+## 5. Surface:
+- **Visual Design:** Implement an appealing design with culinary-themed elements.
+- **Consistent UI Elements:** Ensure a cohesive design across all pages.
+- **Responsive Design:** Optimize visuals for various devices.
+
+Aligning "The Recipe Exchange" with these UX planes ensures a delightful experience for users passionate about sharing and exploring new recipes.
+
 ## Database
 ## Wireframes
+
+![Index](/static/images/readme_files/wireframes/index.png)
+![Signup](/static/images/readme_files/wireframes/signup.png)
+![Login](/static/images/readme_files/wireframes/login.png)
+![Create](/static/images/readme_files/wireframes/create.png)
+![Search](/static/images/readme_files/wireframes/search.png)
+![Profile](/static/images/readme_files/wireframes/profile.png)
+![Signout](/static/images/readme_files/wireframes/signout.png)
+
 ## Design
-## Colour
-## Fonts
 ## Structure
 
 # Features
