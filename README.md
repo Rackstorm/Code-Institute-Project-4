@@ -23,39 +23,54 @@ The Recipe Exchange is a web application designed for users to discover, share, 
   - [Validator Testing](#validator-testing)
 - [Credits](#credits)
 
-## Pages
+# Project Goals
+## User Goals
+## Site Owner Goals
+## Target Audience
+## User Stories
 
-### Home
+# Planning
+## Agile methodology
+## Database
+## Wireframes
+## Design
+## Colour
+## Fonts
+## Structure
+
+# Features
+
+## Home
 - The landing page where you can explore featured recipes and discover new culinary ideas.
 
 ![LandingPage](/static/images/readme_files/landingpage.png)
 
-### Login
+## Login
 - Log in to your account to access your profile and create or manage your recipes.
 
 ![Login](/static/images/readme_files/signin.png)
 
-### Register
+## Register
 - Create a new account and join the Recipe Exchange community.
 
 ![Register](/static/images/readme_files/register.png)
 
-### Find Recipe
+## Find Recipe
 - Search for recipes based on keywords, ingredients, or categories.
 
 ![SearchRecipe](/static/images/readme_files/search.png)
 
-### Create Recipe
+## Create Recipe
 - Share your favorite recipes with the community by creating your own.
 
 
-### Profile
-- View and manage your profile, including your posted recipes and account settings.
+## Profile
+- View and manage your profile, including your posted recipes and saved recipes.
 
-### Logout
+## Logout
 - Log out of your account for security and privacy.
 
-## Technologies
+# Technologies
 
 The Recipe Exchange is built using various technologies:
 
@@ -67,11 +82,11 @@ The Recipe Exchange is built using various technologies:
 - Git and GitHub: Version control and code repository management.
 - Visual Studio Code (VS Code).
 
-## Deployment
+# Deployment
 
 The project is deployed on Heroku, a cloud platform for hosting web applications. It can be accessed online at [Heroku Recipe Exchange](https://myurl.com).
 
-Deployment process:
+## Deployment process:
 1. Create a Heroku account and install the Heroku CLI.
 2. Set up a new Heroku app and connect it to my project's Git repository.
 3. Configure environment variables for settings like database connection and secret keys.
@@ -79,23 +94,25 @@ Deployment process:
 5. Migrate your database and run any necessary setup tasks.
 6. Opened up my app on Heroku.
 
-## Bugs
+# Bugs
 
 | Problem | Resolution |
 |---------|------------|
-| **Autoslug Issue:** Autoslug wasn't functioning as expected. | Added the `autoslug` package to the project and incorporated `AutoSlugField` in the `models.py` file. Ensured it populated the slug field correctly based on the post title. |
-| **Search Functionality:** Needed a search functionality for recipes. | Implemented a search form (`SearchForm`) and a corresponding view (`PostSearch`) to filter recipes based on search terms. |
-| **Image Upload Issue:** Difficulty with image upload in the `PostCreateForm`. | Configured the form to handle file inputs and added appropriate widget attributes. Ensured that the `MEDIA_ROOT` and `MEDIA_URL` settings were correctly set. |
+| **Autoslug Issue:** Autoslug wasn't functioning as expected. | Added the `autoslug` package to the project by including it in the project's dependencies. Incorporated `AutoSlugField` in the `models.py` file for the `Post` model to generate slugs based on the post title. Verified that the slug field was populated correctly. Updated the corresponding URL patterns to use slugs for better SEO-friendly URLs. |
+| **Slug Generation:** The manual process of creating slugs was time-consuming. | Utilized the `AutoSlugField` provided by the `autoslug` package in the `Post` model to automate the generation of slugs based on the post title. This not only streamlined the workflow but also ensured consistent and SEO-friendly URLs for each post. |
+| **Search Functionality:** Needed a search functionality for recipes. | Implemented a search form (`SearchForm`) and a corresponding view (`PostSearch`) to filter recipes based on search terms. Enhanced user experience by allowing users to find relevant recipes efficiently. |
+| **Image Upload Issue:** Difficulty with image upload in the `PostCreateForm`. | Configured the `PostCreateForm` to handle file inputs for image uploads. Added appropriate widget attributes to the form fields related to file uploads. Ensured that the `MEDIA_ROOT` and `MEDIA_URL` settings in Django were correctly configured to handle uploaded media files. |
 
 
-## Testing
 
-### Manual Testing
+# Testing
+
+## Manual Testing
 - Registering user.
 - Creating Recipes (*Note: Not functioning*).
 - Saving Recipes.
 
-### Django Testing
+## Django Testing
 - `test_views.py`.
 The test_views.py file contains test cases for the views in The Recipe Exchange project. These tests ensure the proper functioning of key features, such as post listing, detailed post viewing, and user interactions like liking posts. 
 
@@ -105,11 +122,11 @@ The test_models.py file includes tests for the project's models. It ensures the 
 - `test_forms.py`.
 In the test_forms.py file, various scenarios are tested for different forms, including comments, searches, post creation, signup, and profile editing. The tests ensure that the forms validate and handle both valid and invalid user input, maintaining the functionality and integrity of The Recipe Exchange web application.
 
-### Validator Testing
+## Validator Testing
 
 Validator testing ensures that the HTML, CSS, and JavaScript used in the project meet web standards.
 
-## Credits
+# Credits
 
 - Recipe images and background images are from Jooinn.com.
 - Favicons are created by using icons from Icon8 and FaviconGenerator.com.
