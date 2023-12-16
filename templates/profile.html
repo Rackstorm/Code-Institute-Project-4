@@ -15,7 +15,8 @@
 
                     <p class="text-secondary">{{ user.email }}</p>
                     <p>{{ user.profile.bio }}</p>
-                    <button class="btn btn-primary" onclick="location.href='{% url 'edit_profile' %}'">Edit
+
+                    <button class="btn btn-primary" onclick="location.href={% url 'edit_profile' %}">Edit
                         Profile</button>
 
 
