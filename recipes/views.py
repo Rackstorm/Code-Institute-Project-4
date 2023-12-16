@@ -33,6 +33,7 @@ class PostDetail(View):
             "post_detail.html",
             {
                 "post": post,
+                "category": post.category,
                 "comments": comments,
                 "commented": False,
                 "liked": liked,
@@ -63,6 +64,7 @@ class PostDetail(View):
             "post_detail.html",
             {
                 "post": post,
+                "category": post.category,
                 "comments": comments,
                 "commented": True,
                 "comment_form": comment_form,
@@ -130,8 +132,10 @@ def edit_post(request, slug):
 def ProfileView(request):
     user_profile = Profile.objects.get(user=request.user)
     liked_posts = user_profile.liked_posts.all()
-    user_posts = Post.objects.filter(author=request.user)
-    return render(request, 'profile.html', {'user_profile': user_profile})
+    user_posts = request.user.recipe_posts.all() 
+    return render(request, 'profile.html', {'user_profile': user_profile, 'user_posts': user_posts})
+
+
 
 
 @login_required
