@@ -2,29 +2,37 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Edit Profile" %}{% endblock head_title %}
+{% block head_title %}
+{% trans "Edit Profile" %}
+{% endblock head_title %}
 
 {% block content %}
 <div class="container">
+    <!-- Page Title for Editing Profile -->
     <h1>{% trans "Edit Profile" %}</h1>
 
+    <!-- Form for editing the profile with multipart/form-data encoding -->
     <form class="signup" method="post" action="{% url 'edit_profile' %}" enctype="multipart/form-data">
         {% csrf_token %}
 
+        <!-- Bio field -->
         <div class="mb-3">
             {{ form.bio.label_tag }}
             {{ form.bio }}
         </div>
 
+        <!-- Profile picture field -->
         <div class="mb-3">
             {{ form.profile_picture.label_tag }}
             {{ form.profile_picture }}
         </div>
 
+        <!-- Display current profile picture if available -->
         {% if user_profile.profile_picture %}
         <img src="{{ user_profile.profile_picture.url }}" alt="{{ user_profile.user.username }}'s profile picture">
         {% endif %}
 
+        <!-- Submit button to save changes -->
         <button type="submit" class="btn btn-primary">{% trans "Save Changes" %}</button>
     </form>
 </div>

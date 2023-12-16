@@ -16,8 +16,8 @@
                     <p class="text-secondary">{{ user.email }}</p>
                     <p>{{ user.profile.bio }}</p>
 
-                    <button class="btn btn-primary" onclick="location.href={% url 'edit_profile' %}">Edit
-                        Profile</button>
+                    <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+
 
 
                 </div>
@@ -26,8 +26,8 @@
 
             <h3>Liked Posts:</h3>
             <ul>
-                {% for post in liked_posts %}
-                <li><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></li>
+                {% for like in liked_posts %}
+                <li><a href="{% url 'post_detail' like.post.slug %}">{{ like.post.title }}</a></li>
                 {% endfor %}
             </ul>
 

@@ -4,13 +4,26 @@
 
 {% block content %}
 <div class="container">
+    <!-- Header for Creating a New Recipe -->
     <h2>Create a New Recipe</h2>
+
+    <!-- Form for creating a new recipe with multipart/form-data encoding -->
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+
+        <!-- Render the form using crispy forms -->
         {{ form|crispy }}
+
+        <!-- Include Summernote CSS -->
         <link rel="stylesheet" href="{% static 'django_summernote/summernote-bs4.css' %}">
+
+        <!-- Include Summernote JS -->
         <script src="{% static 'django_summernote/summernote-bs4.js' %}"></script>
+
+        <!-- Include Summernote media (required for WYSIWYG editor) -->
         {{ form.media }}
+
+        <!-- Submit button to create the recipe -->
         <button type="submit" class="btn btn-primary">Create Recipe</button>
     </form>
 </div>

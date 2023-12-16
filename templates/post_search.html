@@ -2,6 +2,7 @@
 {% block content %}
 <div class="container">
     <div class="card">
+        <!-- Search form -->
         <h2>Looking for something special?</h2>
         <form class="signup" method="get">
             {% csrf_token %}
@@ -15,30 +16,39 @@
     <h3>Categories:</h3>
     <ul>
         {% for category in categories %}
+        <!-- Each category is a link with a query parameter for filtering by category -->
         <li><a href="?category={{ category.id }}">{{ category.name }}</a></li>
         {% endfor %}
     </ul>
 
+    <!-- Display search results if any -->
     {% if results %}
     <h3>Results:</h3>
+    <!-- Loop through each post in the search results -->
     {% for post in results %}
     <div class="card mb-4">
         <div class="card-body">
+            <!-- Link to the detailed view of the post -->
             <a href="{% url 'post_detail' post.slug %}">
                 <h3>{{ post.title }}</h3>
             </a>
+            <!-- Display author and creation date -->
             <p>{{ post.author }} | {{ post.created_on }}</p>
+            <!-- Display featured image, fallback to a default image if not available -->
             {% if "placeholder" in post.featured_image.url %}
             <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
             {% else %}
             <img src="{{ post.featured_image.url }}" width="100%">
             {% endif %}
+            <!-- Display post excerpt -->
             <p>{{ post.excerpt }}</p>
+            <!-- Button to navigate to the detailed view of the post -->
             <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read More</a>
         </div>
     </div>
     {% endfor %}
     {% else %}
+    <!-- Display a message if no recipes are found -->
     <p>No recipes found.</p>
     {% endif %}
 </div>
