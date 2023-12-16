@@ -2,10 +2,17 @@
 
 {% block content %}
 <div class="container">
+    <!-- Header for Edit Post -->
     <h1>Edit Post</h1>
+
+    <!-- Form for editing a post with multipart/form-data encoding -->
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+
+        <!-- Render form fields as paragraphs -->
         {{ form.as_p }}
+
+        <!-- Submit button to save changes -->
         <button type="submit">Save Changes</button>
     </form>
 </div>

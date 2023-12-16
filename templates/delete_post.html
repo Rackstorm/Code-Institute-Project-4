@@ -2,12 +2,20 @@
 
 {% block content %}
 <div class="container">
+    <!-- Header for Deletion Confirmation -->
     <h2>Confirm Deletion</h2>
+
+    <!-- Message asking for confirmation -->
     <p>Are you sure you want to delete "{{ post.title }}"?</p>
+
+    <!-- Deletion form -->
     <form method="post">
         {% csrf_token %}
+        <!-- Submit button to confirm deletion -->
         <button type="submit">Yes, delete</button>
     </form>
+
+    <!-- Cancel button linking back to post_detail page -->
     <a href="{% url 'post_detail' post.slug %}">Cancel</a>
 </div>
 {% endblock %}

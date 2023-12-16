@@ -5,43 +5,46 @@
 <div class="content-section">
     <div class="container">
         <div class="card">
+            <!-- Media section displaying user profile information -->
             <div class="media">
-
+                <!-- Display user profile picture as a rounded circle -->
                 <img class="rounded-circle account-img" src="{{ user_profile.profile_picture.url }}"
                     style="max-width: 30%;" />
 
+                <!-- Media body containing user information -->
                 <div class="media-body">
+                    <!-- Display username as the heading -->
                     <h2 class="account-heading">{{ user.username }}</h2>
 
+                    <!-- Display user email as text secondary -->
                     <p class="text-secondary">{{ user.email }}</p>
+
+                    <!-- Display user bio -->
                     <p>{{ user.profile.bio }}</p>
 
+                    <!-- Link to edit user profile -->
                     <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
-
-
-
                 </div>
             </div>
             <hr>
 
+            <!-- Section displaying liked posts -->
             <h3>Liked Posts:</h3>
             <ul>
                 {% for like in liked_posts %}
+                <!-- Display links to liked posts -->
                 <li><a href="{% url 'post_detail' like.post.slug %}">{{ like.post.title }}</a></li>
                 {% endfor %}
             </ul>
 
+            <!-- Section displaying recipes added by the user -->
             <h3>Recipes added by me:</h3>
             <ul>
                 {% for post in user_posts %}
+                <!-- Display links to posts added by the user -->
                 <li><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></li>
                 {% endfor %}
             </ul>
-
-
-
-
-
         </div>
     </div>
 </div>
