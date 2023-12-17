@@ -14,7 +14,7 @@ body {
 
 .container {
     overflow: visible;
-    text-wrap: wrap;
+    text-wrap: balance;
     padding-top: 10px;
 }
 
@@ -37,20 +37,16 @@ body {
 
 .h1 {
     font-family: 'Poppins', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2.5em;
     font-weight: 600;
     color: #fff;
 }
 
-.bg-custom {
-    .custom-navbar {
-        background-image: url('../images/fresh-organic-vegetables-4.jpg');
-        background-size: cover;
-        background-position: center center;
+.bg-custom, .custom-navbar {
         background-repeat: no-repeat;
         color: white;
         font-size: 18px;
-    }
+    
 
 }
 
@@ -109,10 +105,9 @@ body {
 
 .masthead {
     margin-top: 0px;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
-    display: inline-block;
-    height: 33vh;
+    height: auto;
     width: 100%;
     background-color: #ffe6ed;
 }
