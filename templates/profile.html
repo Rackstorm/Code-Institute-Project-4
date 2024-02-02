@@ -1,3 +1,5 @@
+<!-- profile.html -->
+
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
@@ -22,16 +24,44 @@
         </div>
         <hr>
 
-        <!-- Added Recipes Card & Liked Posts Card -->
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Liked Posts:</h3>
-                <ul class="list-unstyled">
-                    {% for like in liked_posts %}
-                    <li><a href="{% url 'post_detail' like.post.slug %}">{{ like.post.title }}</a></li>
-                    {% endfor %}
-                </ul>
-                <h3 class="card-title">Added by me:</h3>
+<!-- Liked Posts Card -->
+
+        <h3 class="card-title">Liked Posts:</h3>
+        <div class="row">
+            {% for liked_post in liked_posts %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="image-container">
+                            {% if "placeholder" in liked_post.featured_image.url %}
+                            <img class="card-img-top"
+                                src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                            {% else %}
+                            <img class="card-img-top" src="{{ liked_post.featured_image.url }}">
+                            {% endif %}
+                            <div class="image-flash">
+                                <p class="author">Author: {{ liked_post.author }}</p>
+                            </div>
+                        </div>
+                        <a href="{% url 'post_detail' liked_post.slug  %}" class="post-link">
+                            <h2 class="card-title">{{ liked_post.title }}</h2>
+                            <p class="card-text">{{ liked_post.excerpt }}</p>
+                        </a>
+                        <hr />
+                        <p class="card-text text-muted h6">{{ liked_post.created_on }} <i
+                                class="far fa-heart"></i> {{ liked_post.number_of_likes }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+</div>
+
+
+
+        <!-- User Posts Card -->
+
+                <h3 class="card-title">Added by Me:</h3>
                 <div class="row">
                     {% for post in user_posts %}
                     <div class="col-md-4">
@@ -60,9 +90,7 @@
                     </div>
                     {% endfor %}
                 </div>
-            </div>
-        </div>
-
+            
     </div>
 </div>
 {% endblock content %}
