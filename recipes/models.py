@@ -68,8 +68,8 @@ class Profile(models.Model):
     """ Model representing a user profile with attributes for the user's bio and profile picture. """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
+    liked_posts = models.ManyToManyField(Post, related_name='liked_posts', blank=True)
     profile_picture = CloudinaryField('image', blank=True, null=True)
-    liked_posts = models.ManyToManyField(Post, related_name='liked_by', blank=True)
 
     def __str__(self):
         return self.user.username

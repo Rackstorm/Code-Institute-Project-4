@@ -13,6 +13,7 @@ class CustomSignupView(SignupView):
     """ Custom SignupView that uses the CustomSignupForm. """
     form_class = CustomSignupForm
 
+
 class PostList(generic.ListView):
     """ Generic ListView for displaying a list of published posts."""
     model = Post
@@ -20,8 +21,10 @@ class PostList(generic.ListView):
     template_name = "index.html"
     paginate_by = 6
 
+
 class PostDetail(View):
     """ View for displaying post details, handling comments, and likes."""
+
     def get(self, request, slug, *args, **kwargs):
         """ Handles GET requests for post details."""
         queryset = Post.objects.filter(status=1)
@@ -79,20 +82,26 @@ class PostDetail(View):
             },
         )
 
+
 class PostLike(View):
     """ View for handling post likes. """
+
     def post(self, request, slug, *args, **kwargs):
         """ Toggle the like status for the current user on the specified post """
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)
+            request.user.profile.liked_posts.remove(post)
         else:
             post.likes.add(request.user)
+            request.user.profile.liked_posts.add(post)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
+
 class PostSearch(View):
     """ View for handling post searches. """
+
     def get(self, request):
         """ Handles GET requests for displaying the search form and results."""
         form = SearchForm()
@@ -106,6 +115,7 @@ class PostSearch(View):
                 search_query |= Q(content__icontains=term, status=1)
             results = Post.objects.filter(search_query).distinct()
         return render(request, "post_search.html", {"form": form, "results": results})
+
 
 @login_required
 def PostCreateView(request):
@@ -122,6 +132,7 @@ def PostCreateView(request):
 
     return render(request, 'post_create.html', {'form': form})
 
+
 @login_required
 def edit_post(request, slug, *args, **kwargs):
     """ View for editing an existing post (requires login). """
@@ -137,14 +148,16 @@ def edit_post(request, slug, *args, **kwargs):
 
     return render(request, 'edit_post.html', {'form': form, 'post': post})
 
+
 @login_required
 def ProfileView(request):
     """ View for displaying user profile information. """
     user_profile = Profile.objects.get(user=request.user)
-    liked_posts = user_profile.liked_posts.all()
+    liked_posts = request.user.profile.liked_posts.all()
     user_posts = request.user.recipe_posts.all()
 
     return render(request, 'profile.html', {'user_profile': user_profile, 'liked_posts': liked_posts, 'user_posts': user_posts})
+
 
 @login_required
 def edit_profile(request):
@@ -152,7 +165,8 @@ def edit_profile(request):
     user_profile = Profile.objects.get(user=request.user)
 
     if request.method == 'POST':
-        form = ProfileEditForm(request.POST, request.FILES, instance=user_profile)
+        form = ProfileEditForm(
+            request.POST, request.FILES, instance=user_profile)
         if form.is_valid():
             form.save()
             return redirect('profile')
@@ -160,6 +174,7 @@ def edit_profile(request):
         form = ProfileEditForm(instance=user_profile)
 
     return render(request, 'edit_profile.html', {'form': form})
+
 
 @login_required
 def delete_post(request, slug, *args, **kwargs):
