@@ -83,7 +83,13 @@ Aligning "The Recipe Exchange" with these UX planes ensures a delightful experie
 ![Signout](/static/images/readme_files/wireframes/signout.png)
 
 ## Design
+The project design utilizes the "Poppins" font for a modern appearance and a color scheme featuring contrasting colors like white and hot pink for readability. It employs responsive layout techniques for compatibility with various screen sizes. Navigation elements maintain consistency in design and responsiveness. 
+
+Forms are styled for clarity and ease of use, while images feature rounded corners and box-shadow effects. Media queries ensure adaptability across devices, and the footer section stands out with a distinctive background color. Overall, the design focuses on usability, readability, and visual appeal.
+
 ## Structure
+
+The webpage structure includes a navigation bar for easy site navigation, a container for housing main content and Bootstrap alert messages, a main content section for dynamically rendering page-specific content, a footer displaying project information and social media links, and a script section for managing the dismissal of Bootstrap alert messages. This structure ensures a cohesive layout, responsive design, and improved user experience throughout the website.
 
 # Features
 
