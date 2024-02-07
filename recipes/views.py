@@ -105,16 +105,23 @@ class PostSearch(View):
     def get(self, request):
         """ Handles GET requests for displaying the search form and results."""
         form = SearchForm()
-        results = []
         query = request.GET.get("q")
+
         if query:
             search_terms = query.split()
             search_query = Q()
             for term in search_terms:
-                search_query |= Q(title__icontains=term, status=1)
-                search_query |= Q(content__icontains=term, status=1)
-            results = Post.objects.filter(search_query).distinct()
-        return render(request, "post_search.html", {"form": form, "results": results})
+                search_query |= Q(title__icontains=term) | Q(
+                    content__icontains=term)
+            results = Post.objects.filter(search_query)
+        else:
+            results = Post.objects.none()
+
+        context = {
+            "form": form,
+            "results": results,
+        }
+        return render(request, "post_search.html", context)
 
 
 @login_required

@@ -6,19 +6,25 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+
 class Category(models.Model):
     """ Model representing a category for posts. """
-    title = models.CharField(max_length=200, unique=True, verbose_name="Category")
+    title = models.CharField(
+        max_length=200, unique=True, verbose_name="Category")
 
     def __str__(self):
         return self.title
 
+
 class Post(models.Model):
     """ Model with attributes for a blog post. """
     title = models.CharField(max_length=200, unique=True)
-    slug = AutoSlugField(populate_from='title', unique=True, always_update=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipe_posts")
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name="posts")
+    slug = AutoSlugField(populate_from='title',
+                         unique=True, always_update=True)
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="recipe_posts")
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True, related_name="posts")
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
@@ -43,14 +49,17 @@ class Post(models.Model):
         """ Deletes a post. """
         self.delete()
 
+
 class PostLike(models.Model):
     """ Model representing a like for a specific post by a user. """
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+
 class Comment(models.Model):
     """ Model representing a comment on a blog post with attributes for the comment's author."""
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name="comments")
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
@@ -64,11 +73,13 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
 
+
 class Profile(models.Model):
     """ Model representing a user profile with attributes for the user's bio and profile picture. """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
-    liked_posts = models.ManyToManyField(Post, related_name='liked_posts', blank=True)
+    liked_posts = models.ManyToManyField(
+        Post, related_name='liked_posts', blank=True)
     profile_picture = CloudinaryField('image', blank=True, null=True)
 
     def __str__(self):
