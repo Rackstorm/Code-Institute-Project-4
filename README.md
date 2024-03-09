@@ -24,9 +24,24 @@ The Recipe Exchange is a web application designed for users to discover, share, 
 - [Credits](#credits)
 
 # Project Goals
+The project aims to create a user-friendly recipe sharing platform that allows users to discover, share, and explore a variety of recipes. It seeks to provide an intuitive interface for users to find recipes based on different categories and preferences.
+
 ## User Goals
+- Find and discover new recipes easily.
+- Share their own recipes with the community.
+- Interact with other users by liking and commenting on recipes.
+- Easily navigate the platform and access relevant information.
+- Have a visually appealing and responsive user interface.
+
 ## Site Owner Goals
+- Create a vibrant community around cooking and recipe sharing.
+- Engage users by providing valuable content and features.
+- Increase user retention through interactive features and personalized experiences.
+- Collect insights into user preferences and behavior for continuous improvement.
+
 ## Target Audience
+The target audience includes cooking enthusiasts, home cooks, food bloggers, and anyone interested in exploring and sharing recipes. It caters to individuals of all skill levels, from beginners to experienced chefs, who are passionate about cooking and experimenting with new dishes.
+
 
 ## User Stories
 
@@ -75,7 +90,37 @@ GitHubs
 
 Aligning "The Recipe Exchange" with these UX planes ensures a delightful experience for users passionate about sharing and exploring new recipes.
 
-## Database
+
+
+## Database Scheme
+![Flowchart](/static/images/readme_files/diagram.png)
+
+
+### Entity Relationship Diagram (ERD)
+
+| Entity   | Attributes                                                                       |
+|----------|----------------------------------------------------------------------------------|
+| Category | id (PK) <br> title (Unique)                                                     |
+| Post     | id (PK) <br> title (Unique) <br> slug (Unique) <br> author_id (FK to User) <br> category_id (FK to Category, nullable) <br> featured_image <br> excerpt <br> updated_on <br> content <br> created_on <br> status <br> likes (Many-to-Many relationship with User) |
+| PostLike | id (PK) <br> post_id (FK to Post) <br> user_id (FK to User)                     |
+| Comment  | id (PK) <br> post_id (FK to Post) <br> name <br> email <br> body <br> created_on <br> approved |
+| Profile  | user_id (PK, FK to User) <br> bio <br> liked_posts (Many-to-Many relationship with Post) <br> profile_picture |
+
+## Security
+
+### Cross-Site Request Forgery (CSRF) Protection
+- Implementing CSRF protection helps prevent malicious websites from executing unauthorized actions on behalf of authenticated users.
+- Django provides built-in CSRF protection by including a CSRF token with each form submission and verifying it on the server side.
+
+### Django Allauth for Authentication and Authorization
+- Django Allauth is an authentication and authorization framework that provides features like registration, login, password management, and social authentication.
+- It ensures secure user authentication and authorization processes.
+
+### Restricted Features for Authenticated Users
+- Certain features, such as creating, editing, or deleting recipes, are reserved for authenticated users only.
+- By requiring users to be logged in to access these features, the application enhances security and ensures that sensitive operations are performed by authorized individuals only.
+
+
 ## Wireframes
 
 ![Index](/static/images/readme_files/wireframes/index.png)
@@ -168,9 +213,15 @@ The project is deployed on Heroku, a cloud platform for hosting web applications
 # Testing
 
 ## Manual Testing
-- Registering user.
-- Creating Recipes (*Note: Not functioning*).
-- Saving Recipes.
+| Goal                                   | Issue                                                    | Solution                                                                                                    |
+|----------------------------------------|----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| Likes Functionality                    | Likes feature not functioning as expected               | Likes not being registered or counted correctly due to issues in the `views.py` and `models.py` files. Investigated and fixed logic related to registering and counting likes. Resolved issues related to the display of liked recipes on the user's profile page. |
+| Profile Management                    | Issues with user profile management | Problems with profile creation, login, mechanisms due to errors in `views.py` settings. Reviewed and debugged profile creation. Made necessary adjustments in `views.py` and `settings.py` to ensure smooth user profile management. |
+| Post Creation        | Various errors and unexpected behaviors in post creation   | Bugs and glitches in post creation functionality due to code inconsistencies and errors in `views.py` and `forms.py` files. Identified and addressed specific issues in post creation functionality in `views.py` and `forms.py`. Implemented comprehensive error logging and monitoring in the application to track and resolve issues quickly. |
+| Search Functionality     | Problems with search functionality due to inconsistencies in code   | Search functionality not returning expected results due to code inconsistencies and errors in `views.py` and `forms.py` files. Identified and addressed specific issues in search functionality in `views.py` and `forms.py`. Implemented comprehensive error logging and monitoring in the application to track and resolve issues quickly. |
+| Typo in URLs.py                        | Initially, there was a typo in the urls.py file, which caused an AttributeError. | Identified and corrected the typo in the urls.py file, resolving the AttributeError. |
+| Add Recipe                             | Difficulty in adding new recipes                         | Identified issues with form validation and database interaction in `views.py` and `forms.py`. Implemented necessary changes to ensure proper validation and saving of new recipe data. |
+
 
 ## Django Testing
 - `test_views.py`.
