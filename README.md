@@ -44,6 +44,10 @@ The Recipe Exchange is a web application designed for users to discover, share, 
 
 # Planning
 
+GitHubs 
+
+![UserStories](/static/images/readme_files/userstories.png)
+
 ## 1. Strategy:
 - **Project Goals:** Define objectives for sharing, discovering, and managing recipes.
 - **User-Centric Approach:** Understand the needs of users interested in cooking.
@@ -115,13 +119,15 @@ The webpage structure includes a navigation bar for easy site navigation, a cont
 
 ## Create Recipe
 - Share your favorite recipes with the community by creating your own.
-
+![CreateRecipe](/static/images/readme_files/create_recipe.png)
 
 ## Profile
 - View and manage your profile, including your posted recipes and saved recipes.
+![Profile](/static/images/readme_files/profile.png)
 
-## Logout
+## Log out
 - Log out of your account for security and privacy.
+![SignOut](/static/images/readme_files/signout.png)
 
 # Technologies
 
