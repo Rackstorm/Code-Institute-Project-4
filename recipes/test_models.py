@@ -1,12 +1,16 @@
 """ Test cases for the models of the recipes app. """
 import os
+
+from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
-from django.contrib.auth.models import User
-from .models import Post, Category, Comment, Profile
+
+from .models import Category, Comment, Post, Profile
+
 
 class CategoryModelTest(TestCase):
     """ Test case for the Category model. """
+
     def test_category_creation(self):
         """ Test if a category is created correctly with the expected attributes. """
         category = Category.objects.create(title="Test Category")
@@ -15,11 +19,14 @@ class CategoryModelTest(TestCase):
 
 class PostModelTest(TestCase):
     """ Test case for the Post model. """
+
     def setUp(self):
         user = User.objects.create_user('testuser', password='testpassword')
         category = Category.objects.create(title="Test Category")
-        image_path = os.path.join(os.path.dirname(__file__), '../static/images/fresh-organic-vegetables-4.jpg')
-        image = SimpleUploadedFile("test_image.jpg", content=open(image_path, 'rb').read(), content_type="image/jpeg")
+        image_path = os.path.join(os.path.dirname(
+            __file__), '../static/images/fresh-organic-vegetables-4.jpg')
+        image = SimpleUploadedFile("test_image.jpg", content=open(
+            image_path, 'rb').read(), content_type="image/jpeg")
         self.post = Post.objects.create(
             title="Test Post",
             slug="test-post",
@@ -48,6 +55,7 @@ class PostModelTest(TestCase):
 
 class CommentModelTest(TestCase):
     """ Test case for the Comment model. """
+
     def setUp(self):
         user = User.objects.create_user('testuser', password='testpassword')
         category = Category.objects.create(title="Test Category")
@@ -78,6 +86,7 @@ class CommentModelTest(TestCase):
 
 class ProfileModelTest(TestCase):
     """ Test case for the Profile model. """
+
     def setUp(self):
         user = User.objects.create_user('testuser', password='testpassword')
         self.profile = Profile.objects.create(
@@ -86,7 +95,8 @@ class ProfileModelTest(TestCase):
             profile_picture=SimpleUploadedFile(
                 "test_image.jpg",
                 content=open(
-                    os.path.join(os.path.dirname(__file__), '../static/images/fresh-organic-vegetables-4.jpg'),
+                    os.path.join(os.path.dirname(
+                        __file__), '../static/images/fresh-organic-vegetables-4.jpg'),
                     'rb'
                 ).read(),
                 content_type="image/jpeg"

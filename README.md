@@ -227,7 +227,6 @@ The project is deployed on Heroku, a cloud platform for hosting web applications
 
 | Input                                    | Expected Output                                         | Actual Output                               |
 |------------------------------------------|----------------------------------------------------------|---------------------------------------------|
-| Clicking on main heading on landing page | Returning to home page                                  | Pass. No errors.                           |
 | Registering a new user                  | New user registered successfully.                        | Pass. No errors.                           |
 | Registering a new admin                 | New admin registered successfully.                       | Pass. No errors.                           |
 | Sign in/sign out                        | Signing in/out successfully with confirmation showing on page. | Pass. No errors.                           |
@@ -250,9 +249,23 @@ The test_models.py file includes tests for the project's models. It ensures the 
 - `test_forms.py`.
 In the test_forms.py file, various scenarios are tested for different forms, including comments, searches, post creation, signup, and profile editing. The tests ensure that the forms validate and handle both valid and invalid user input, maintaining the functionality and integrity of The Recipe Exchange web application.
 
+## Future features to implement
+
+| Feature                                      | Description                                                                |
+|----------------------------------------------|----------------------------------------------------------------------------|
+| E-mail Confirmation                         | Implement mandatory e-mail verification upon registration to enhance account security and user validation.                                       |
+| CSS Styling                                 | Refine CSS styling to address spacing and padding issues for improved visual consistency and user experience.                                 |
+| Community Development                       | Enable members to interact by allowing profile visits and forum posting, fostering a sense of community engagement and user interaction.   |
+
+
 ## Validator Testing
 
 Validator testing ensures that the HTML, CSS, and JavaScript used in the project meet web standards.
+
+### Lighthouse
+### W3 Validator
+### CSS Validator
+## Code Institute - CI Python Linter
 
 # Credits
 

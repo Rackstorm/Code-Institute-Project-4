@@ -1,13 +1,17 @@
 """ Recipes app views unit tests module """
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth.models import User
+
 from .models import Post, Profile
+
 
 class PostCreateViewTest(TestCase):
     """ Test case for the post create view. """
+
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
         self.client.login(username='testuser', password='testpassword')
 
     def test_post_create_view_get(self):
@@ -27,13 +31,16 @@ class PostCreateViewTest(TestCase):
             'status': 1
         })
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(Post.objects.filter(title='New Test Post').exists(), True)
+        self.assertEqual(Post.objects.filter(
+            title='New Test Post').exists(), True)
 
 
 class ProfileViewTest(TestCase):
     """ Test case for the profile view. """
+
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
         self.client.login(username='testuser', password='testpassword')
 
     def test_profile_view(self):
@@ -45,8 +52,10 @@ class ProfileViewTest(TestCase):
 
 class EditProfileViewTest(TestCase):
     """ Test case for the edit profile view. """
+
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
         self.client.login(username='testuser', password='testpassword')
 
     def test_edit_profile_view_get(self):
@@ -68,14 +77,18 @@ class EditProfileViewTest(TestCase):
 
 class PostLikeViewTest(TestCase):
     """ Test case for the post like view. """
+
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
-        self.post = Post.objects.create(title='Test Post', slug='test-post', author=self.user, content='Test content', status=1)
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
+        self.post = Post.objects.create(
+            title='Test Post', slug='test-post', author=self.user, content='Test content', status=1)
         self.client.login(username='testuser', password='testpassword')
 
     def test_post_like_view(self):
         """ Test if the post like view for an invalid post slug returns a status code 404 (not found). """
-        response = self.client.post(reverse('post_like', args=[self.post.slug]))
+        response = self.client.post(
+            reverse('post_like', args=[self.post.slug]))
         self.assertEqual(response.status_code, 302)
         updated_post = Post.objects.get(slug=self.post.slug)
         self.assertEqual(updated_post.likes.count(), 1)

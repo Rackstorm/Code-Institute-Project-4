@@ -1,12 +1,19 @@
 """ This module contains the views for the recipes app. """
 from allauth.account.views import SignupView
-from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.decorators import login_required
-from django.views import generic, View
-from django.http import HttpResponseRedirect
 from django.db.models import Q
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect, render, reverse
+from django.views import View, generic
+
+from .forms import (
+    CommentForm,
+    CustomSignupForm,
+    PostCreateForm,
+    ProfileEditForm,
+    SearchForm,
+)
 from .models import Post, Profile
-from .forms import CommentForm, SearchForm, PostCreateForm, CustomSignupForm, ProfileEditForm
 
 
 class CustomSignupView(SignupView):
