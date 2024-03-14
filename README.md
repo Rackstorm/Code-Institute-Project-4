@@ -265,10 +265,19 @@ Validator testing ensures that the HTML, CSS, and JavaScript used in the project
 ### Lighthouse
 ### W3 Validator
 ### CSS Validator
+
 ## Code Institute - CI Python Linter
+No errors.
 
 # Credits
 
-- Recipe images and background images are from Jooinn.com.
-- Favicons are created by using icons from Icon8 and FaviconGenerator.com.
-- The basic structure of this project is borrowed from Code Institutes learning model "I think, therefore I blog" and has been modified.
+- Recipe images and background images are from [Jooinn.com](https://www.jooinn.com/).
+- Favicons are created by using icons from [Icon8](https://icons8.com/) and [FaviconGenerator.com](https://www.favicon-generator.org/).
+- The basic code structure of this project has been borrowed from Code Institutes project "I think, therefore I blog" and has been modified.
+- Troubleshooting with the help from [Stack Overflow](https://stackoverflow.com/).
+- [Codemy.com](https://www.youtube.com/channel/UCFB0dxMudkws1q8w5NJEAmw)'s YouTube tutorials:
+  - [Create a Simple Blog with Python and Django](https://www.youtube.com/watch?v=x1iqcV3Wgnw)
+  - [Django Blog](https://www.youtube.com/watch?v=zb4fIvtn4tY)
+  - [Create a Simple Blog with Python and Django Playlist](https://www.youtube.com/watch?v=B40bteAMM_M&list=PLCC34OHNcOtr025c1kHSPrnP18YPB-NFi)
+- [KSDunne](https://github.com/KSDunne)'s Statement Beauty project - [GitHub Link](https://github.com/KSDunne/statement_beauty)
+- [Dennis Ivy's tutorial](https://www.youtube.com/watch?v=llbtoQTt4qw) - Forms, registrations, user etc.

@@ -37,13 +37,13 @@ class PostDetail(View):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
 
-        # Retrieve approved comments and check if the user has liked the post
+        """ Retrieve approved comments and check if the user has liked the post """
         comments = post.comments.filter(approved=True).order_by("-created_on")
         liked = False
         if request.user.is_authenticated and post.likes.filter(id=request.user.id).exists():
             liked = True
 
-        # Render the post detail page with relevant informatio """
+        """ Render the post detail page with relevant information """
         return render(
             request,
             "post_detail.html",
