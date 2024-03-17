@@ -8,7 +8,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 
 class Category(models.Model):
-    """ Model representing a category for posts. """
+    """ Model representing a category for posts. Added by me."""
     title = models.CharField(
         max_length=200, unique=True, verbose_name="Category")
 
@@ -17,7 +17,7 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    """ Model with attributes for a blog post. """
+    """ Model with attributes for a blog post. Code used from the Code Institute's I think, Therefore I blog and has been modified. """
     title = models.CharField(max_length=200, unique=True)
     slug = AutoSlugField(populate_from='title',
                          unique=True, always_update=True)
@@ -51,13 +51,13 @@ class Post(models.Model):
 
 
 class PostLike(models.Model):
-    """ Model representing a like for a specific post by a user. """
+    """ Model representing a like for a specific post by a user. Code used from the Code Institute's I think, Therefore I blog. """
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Comment(models.Model):
-    """ Model representing a comment on a blog post with attributes for the comment's author."""
+    """ Model representing a comment on a blog post with attributes for the comment's author. Code used from the Code Institute's I think, Therefore I blog and has been modified."""
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments")
     name = models.CharField(max_length=80)
@@ -75,7 +75,7 @@ class Comment(models.Model):
 
 
 class Profile(models.Model):
-    """ Model representing a user profile with attributes for the user's bio and profile picture. """
+    """ Model representing a user profile with attributes for the user's bio and profile picture. Code has been added by me. """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
     liked_posts = models.ManyToManyField(

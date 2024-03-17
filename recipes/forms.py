@@ -7,7 +7,7 @@ from .models import Comment, Post, Profile
 
 
 class CommentForm(forms.ModelForm):
-    """ Form for adding comments to a post. """
+    """ Form for adding comments to a post. Code used from the Code Institute's I think, Therefore I blog """
     class Meta:
         """ Meta class for the CommentForm. """
         model = Comment
@@ -40,6 +40,7 @@ class PostCreateForm(forms.ModelForm):
 
 class CustomSignupForm(SignupForm):
     """ Custom signup form extending Allauth's SignupForm. """
+    email = forms.EmailField(required=True)
     bio = forms.CharField(max_length=500, required=False,
                           widget=forms.Textarea(attrs={'rows': 4, 'cols': 40}))
     profile_picture = forms.ImageField(required=False)
@@ -47,9 +48,9 @@ class CustomSignupForm(SignupForm):
     def save(self, request):
         """ Custom save method to update the user profile. """
         user = super().save(request)
-        user.profile.bio = self.cleaned_data.get('bio', '')
         user.profile.profile_picture = self.cleaned_data.get(
             'profile_picture', None)
+        user.profile.bio = self.cleaned_data.get('bio', '')
         user.profile.save()
         return user
 

@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% load i18n %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock head_title %}
@@ -11,36 +10,7 @@
   <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}" enctype="multipart/form-data">
     {% csrf_token %}
 
-    <div class="mb-3">
-      {{ form.username.label_tag }}
-      {{ form.username }}
-    </div>
-
-    <div class="mb-3">
-      {{ form.email.label_tag }}
-      {{ form.email }}
-    </div>
-
-    <div class="mb-3">
-      {{ form.password1.label_tag }}
-      {{ form.password1 }}
-    </div>
-
-    <div class="mb-3">
-      {{ form.password2.label_tag }}
-      {{ form.password2 }}
-    </div>
-
-    <div class="mb-3">
-      {{ form.bio.label_tag }}
-      {{ form.bio }}
-    </div>
-
-    <div class="mb-3">
-      {{ form.profile_picture.label_tag }}
-      {{ form.profile_picture }}
-    </div>
-
+    {{ form.as_p }}
 
     {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />

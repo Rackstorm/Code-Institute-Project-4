@@ -5,6 +5,8 @@
 
 The Recipe Exchange is a web application designed for users to discover, share, and exchange their favorite recipes. Whether you're a cooking enthusiast or simply looking for meal ideas, The Recipe Exchange offers a platform to connect with others and explore a variety of recipes.
 
+For the basic structure of this Django project I have been borrowing code from Code Institutes' "I Think, Therefore I Blog" project and modified it, as well as added my own code.
+
 ## Contents
 - [Pages](#pages)
   - [Home](#home)
@@ -59,9 +61,16 @@ The target audience includes cooking enthusiasts, home cooks, food bloggers, and
 
 # Planning
 
-GitHubs 
+Throughout the project planning phase, I have employed GitHub's issue tracking tool and project board to facilitate an agile working methodology. By leveraging these tools, I have streamlined project management processes, enabling effective collaboration, task prioritization, and iterative development cycles.
 
+## Issue Tracking Tool
+![Issues](/static/images/readme_files/issues.png)
+
+## Project Board
 ![UserStories](/static/images/readme_files/userstories.png)
+
+## User Story Template
+![UserStory](/static/images/readme_files/userstory.png)
 
 ## 1. Strategy:
 - **Project Goals:** Define objectives for sharing, discovering, and managing recipes.
@@ -207,16 +216,14 @@ The project is deployed on Heroku, a cloud platform for hosting web applications
 | **Search Functionality:** Needed a search functionality for recipes. | Implemented a search form (`SearchForm`) and a corresponding view (`PostSearch`) to filter recipes based on search terms. Enhanced user experience by allowing users to find relevant recipes efficiently. |
 | **Image Upload Issue:** Difficulty with image upload in the `PostCreateForm`. | Configured the `PostCreateForm` to handle file inputs for image uploads. Added appropriate widget attributes to the form fields related to file uploads. Ensured that the `MEDIA_ROOT` and `MEDIA_URL` settings in Django were correctly configured to handle uploaded media files. |
 | **Pylint Error (Post and Profile Classes):** `Class 'Post' has no 'objects' member` and `Class 'Profile' has no 'objects' member` | Ignored the pylint errors related to the absence of `objects` member for the `Post` and `Profile` classes. These errors are due to the use of custom managers in Django models, and the issue has already been defined in the `models.py` file. The code is functioning as intended, and these errors do not impact the application's behavior. |
-| Likes Functionality                    | Likes feature not functioning as expected               | Likes not being registered or counted correctly due to issues in the `views.py` and `models.py` files. Investigated and fixed logic related to registering and counting likes. Resolved issues related to the display of liked recipes on the user's profile page. |
-| Profile Management                    | Issues with user profile management | Problems with profile creation, login, mechanisms due to errors in `views.py` settings. Reviewed and debugged profile creation. Made necessary adjustments in `views.py` and `settings.py` to ensure smooth user profile management. |
-| Post Creation        | Various errors and unexpected behaviors in post creation   | Bugs and glitches in post creation functionality due to code inconsistencies and errors in `views.py` and `forms.py` files. Identified and addressed specific issues in post creation functionality in `views.py` and `forms.py`. Implemented comprehensive error logging and monitoring in the application to track and resolve issues quickly. |
-| Search Functionality     | Problems with search functionality due to inconsistencies in code   | Search functionality not returning expected results due to code inconsistencies and errors in `views.py` and `forms.py` files. Identified and addressed specific issues in search functionality in `views.py` and `forms.py`. Implemented comprehensive error logging and monitoring in the application to track and resolve issues quickly. |
-| Typo in URLs.py                        | Initially, there was a typo in the urls.py file, which caused an AttributeError. | Identified and corrected the typo in the urls.py file, resolving the AttributeError. |
-| Add Recipe                             | Difficulty in adding new recipes                         | Identified issues with form validation and database interaction in `views.py` and `forms.py`. Implemented necessary changes to ensure proper validation and saving of new recipe data. |
-| Categories Implementation             | Difficulty in implementing category functionality     | Category filtering not working properly due to incorrect logic in the `views.py` file. Updated `views.py` to ensure proper association of posts with categories. Made changes in `models.py` to handle category data in the database correctly. Implemented validation in the front-end forms to ensure accurate category selection by users. |
-| Likes Functionality       | Likes feature not functioning as expected               | Likes not being registered or counted correctly due to issues in the `views.py` and `models.py` files. Investigated and fixed logic related to registering and counting likes. Implemented error handling for like actions to provide feedback to users in case of failures. |
-| Profile Management        | Issues with user profile management and authentication | Problems with profile creation, login, and authentication mechanisms due to errors in `views.py` and authentication settings. Reviewed and debugged profile creation and authentication processes. Made necessary adjustments in `views.py` and `settings.py` to ensure smooth user profile management and authentication. Implemented robust error handling for profile-related actions to provide clear instructions for users encountering authentication issues. |
-| Post Creation            | Various errors and unexpected behaviors in application   | Bugs and glitches in post creation, editing, search functionality due to code inconsistencies and errors in `views.py` and `forms.py` files. Identified and addressed specific issues in post creation, editing, and search functionality in `views.py` and `forms.py`. Implemented comprehensive error logging and monitoring in the application to track and resolve issues quickly. |
+| Likes Functionality                    | Likes feature not functioning as expected. Likes not being registered or counted correctly due to issues in the `views.py` and `models.py` files. Investigated and fixed logic related to registering and counting likes. Resolved issues related to the display of liked recipes on the user's profile page. |
+| Profile Management                    | Issues with user profile management. Problems with profile creation, login, mechanisms due to errors in `views.py` settings. Reviewed and debugged profile creation. Made necessary adjustments in `views.py` and `settings.py` to ensure smooth user profile management. |
+| Post Creation        | Various errors and unexpected behaviors in posts. Bugs and glitches in post creation functionality due to code inconsistencies and errors in `views.py` and `forms.py` files. Identified and addressed specific issues in post creation functionality in `views.py` and `forms.py`. Implemented comprehensive error logging and monitoring in the application to track and resolve issues quickly. |
+| Search Functionality     | Problems with search functionality due to inconsistencies in code. Search functionality not returning expected results due to code inconsistencies and errors in `views.py` and `forms.py` files. Identified and addressed specific issues in search functionality in `views.py` and `forms.py`. Implemented comprehensive error logging and monitoring in the application to track and resolve issues quickly. |
+| Typo in URLs.py                        | Initially, there was a typo in the urls.py file, which caused an AttributeError. Identified and corrected the typo in the urls.py file, resolving the AttributeError. |
+| Add Recipe                             | Difficulty in adding new recipes       . Identified issues with form validation and database interaction in `views.py` and `forms.py`. Implemented necessary changes to ensure proper validation and saving of new recipe data. |
+| Categories Implementation             | Difficulty in implementing category functionality. Category filtering not working properly due to incorrect logic in the `views.py` file. Updated `views.py` to ensure proper association of posts with categories. Made changes in `models.py` to handle category data in the database correctly. Implemented validation in the front-end forms to ensure accurate category selection by users. |
+
 
 
 
@@ -273,6 +280,7 @@ No errors.
 
 - Recipe images and background images are from [Jooinn.com](https://www.jooinn.com/).
 - Favicons are created by using icons from [Icon8](https://icons8.com/) and [FaviconGenerator.com](https://www.favicon-generator.org/).
+- Flowchart from [Draw.io](https://app.diagrams.net/). 
 - The basic code structure of this project has been borrowed from Code Institutes project "I think, therefore I blog" and has been modified.
 - Troubleshooting with the help from [Stack Overflow](https://stackoverflow.com/).
 - [Codemy.com](https://www.youtube.com/channel/UCFB0dxMudkws1q8w5NJEAmw)'s YouTube tutorials:

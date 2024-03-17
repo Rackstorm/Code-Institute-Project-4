@@ -3,6 +3,7 @@ from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
 from .forms import CommentForm, SearchForm, PostCreateForm, CustomSignupForm, ProfileEditForm
 
+
 class CommentFormTest(TestCase):
     """ Test case for the CommentForm. """
 
@@ -56,7 +57,7 @@ class PostCreateFormTest(TestCase):
             'title': '',
             'excerpt': '',
             'content': '',
-            'category': '', 
+            'category': '',
             'status': 'invalid_status'
         }
         form = PostCreateForm(data=form_data)
@@ -75,7 +76,7 @@ class CustomSignupFormTest(TestCase):
             'password2': 'testpassword',
             'bio': 'This is a test bio.',
             'profile_picture': SimpleUploadedFile("test_image.jpg", b"file_content", content_type="image/jpeg"),
-       }
+        }
         form = CustomSignupForm(data=form_data)
         self.assertTrue(form.is_valid())
 
@@ -110,8 +111,8 @@ class ProfileEditFormTest(TestCase):
     def test_invalid_profile_edit_form(self):
         """ Provided with invalid data and assert that the form is invalid. """
         form_data = {
-            'bio': '', 
-            'profile_picture': 'invalid_file', 
+            'bio': '',
+            'profile_picture': 'invalid_file',
         }
         form = ProfileEditForm(data=form_data)
         self.assertFalse(form.is_valid())
