@@ -7,6 +7,14 @@ The Recipe Exchange is a web application designed for users to discover, share, 
 
 For the basic structure of this Django project I have been borrowing code from Code Institutes' "I Think, Therefore I Blog" project and modified it, as well as added my own code.
 
+# A Deadline To Remember 
+
+The deadline for this school project was on the 18th of December. However, on the 18th of December at 10:58 AM I gave birth to my second son, Henry. :) Doing this project while being pregnant and taking care of a toddler has been a challenge. Finalizing this project with a toddler and a baby was even harder.
+
+This will not be the prettiest project I have submitted - but it will forever be the most memorable in many ways.
+
+With that said, I apologize for the retro 90's look - enjoy the Swedish recipes though. :) 
+
 ## Contents
 - [Pages](#pages)
   - [Home](#home)

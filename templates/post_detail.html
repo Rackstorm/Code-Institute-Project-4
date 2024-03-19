@@ -106,12 +106,6 @@
                         {{ comment.body | linebreaks }}
                     </div>
                     {% endfor %}
-                </div>
-            </div>
-
-            <!-- Comment Form Section -->
-            <div class="col-md-4 card mb-4 mt-3 ">
-                <div class="card-body">
                     {% if commented %}
                     <!-- Display a success message if the comment is awaiting approval -->
                     <div class="alert alert-success" role="alert">
@@ -132,6 +126,8 @@
                     {% endif %}
                 </div>
             </div>
+
+
         </div>
     </div>
 </div>
