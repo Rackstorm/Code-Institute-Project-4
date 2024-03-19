@@ -9,7 +9,7 @@
         <div class="masthead">
             <div class="container">
                 <div class="row g-1">
-                    <h1>Welcome to The Recipe Exchange!</h1>
+                    <h2>Welcome to The Recipe Exchange!</h2>
 
                     <p>
                         Share your favorite recipes with a vibrant community of food enthusiasts.
@@ -54,9 +54,9 @@
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
                                 <img class="card-img-top"
-                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" alt="Default">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                                <img class="card-img-top" src=" {{ post.featured_image.url }}" alt="{{ post.title }}">
                                 {% endif %}
                                 <div class="image-flash">
                                     <p class="author">Author: {{ post.author }}</p>
@@ -66,7 +66,7 @@
                                 <h2 class="card-title">{{ post.title }}</h2>
                                 <p class="card-text">{{ post.excerpt }}</p>
                             </a>
-                            <hr />
+                            <hr>
                             <p class="card-text text-muted h6">{{ post.created_on}} <i class="far fa-heart"></i>
                                 {{ post.number_of_likes }}</p>
                         </div>

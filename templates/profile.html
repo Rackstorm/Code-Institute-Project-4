@@ -12,7 +12,7 @@
             <div class="card-body">
                 <div class="media">
                     <img class="rounded-circle account-img" src="{{ user_profile.profile_picture.url }}"
-                        style="max-width: 30%;" />
+                        style="max-width: 30%;" alt="User profile picture">
                     <div class="media-body">
                         <h2 class="account-heading">{{ user.username }}</h2>
                         <p class="text-secondary">{{ user.email }}</p>
@@ -35,9 +35,9 @@
                         <div class="image-container">
                             {% if "placeholder" in liked_post.featured_image.url %}
                             <img class="card-img-top"
-                                src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" alt="Default">
                             {% else %}
-                            <img class="card-img-top" src="{{ liked_post.featured_image.url }}">
+                            <img class="card-img-top" src="{{ liked_post.featured_image.url }}" alt="{{ post.title }}">
                             {% endif %}
                             <div class="image-flash">
                                 <p class="author">Author: {{ liked_post.author }}</p>
@@ -47,7 +47,7 @@
                             <h2 class="card-title">{{ liked_post.title }}</h2>
                             <p class="card-text">{{ liked_post.excerpt }}</p>
                         </a>
-                        <hr />
+                        <hr>
                         <p class="card-text text-muted h6">{{ liked_post.created_on }} <i
                                 class="far fa-heart"></i> {{ liked_post.number_of_likes }}</p>
                     </div>
@@ -70,9 +70,9 @@
                                 <div class="image-container">
                                     {% if "placeholder" in post.featured_image.url %}
                                     <img class="card-img-top"
-                                        src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                        src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" alt="Default">
                                     {% else %}
-                                    <img class="card-img-top" src="{{ post.featured_image.url }}">
+                                    <img class="card-img-top" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
                                     {% endif %}
                                     <div class="image-flash">
                                         <p class="author">Author: {{ post.author }}</p>
@@ -82,7 +82,7 @@
                                     <h2 class="card-title">{{ post.title }}</h2>
                                     <p class="card-text">{{ post.excerpt }}</p>
                                 </a>
-                                <hr />
+                                <hr>
                                 <p class="card-text text-muted h6">{{ post.created_on}} <i
                                         class="far fa-heart"></i> {{ post.number_of_likes }}</p>
                             </div>

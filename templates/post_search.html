@@ -36,9 +36,9 @@
             <p>{{ post.author }} | {{ post.created_on }}</p>
             <!-- Display featured image, fallback to a default image if not available -->
             {% if "placeholder" in post.featured_image.url %}
-            <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+            <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%" alt="Default">
             {% else %}
-            <img src="{{ post.featured_image.url }}" width="100%">
+            <img src="{{ post.featured_image.url }}" width="100%" alt="{{ post.title }}">
             {% endif %}
             <!-- Display post excerpt -->
             <p>{{ post.excerpt }}</p>
