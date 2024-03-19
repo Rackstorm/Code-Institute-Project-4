@@ -242,7 +242,7 @@ The Recipe Exchange is built using various technologies:
 
 # Deployment
 
-The project is deployed on Heroku, a cloud platform for hosting web applications. It can be accessed online at [Heroku Recipe Exchange](https://myurl.com).
+The project is deployed on Heroku, a cloud platform for hosting web applications. It can be accessed online at [Heroku Recipe Exchange](https://code-project-4-7bed3136eda4.herokuapp.com/).
 
 ## Deployment process:
 1. Create a Heroku account and install the Heroku CLI.
