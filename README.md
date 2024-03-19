@@ -305,7 +305,7 @@ In the test_forms.py file, various scenarios are tested for different forms, inc
 
 | Feature                                      | Description                                                                |
 |----------------------------------------------|----------------------------------------------------------------------------|
-| E-mail Confirmation                         | Implement mandatory e-mail verification upon registration to enhance account security and user validation.                                       |
+| E-mail Confirmation                         | Implement mandatory e-mail verification upon registration to enhance account securitgit ay and user validation.                                       |
 | CSS Styling                                 | Refine CSS styling to address spacing and padding issues for improved visual consistency and user experience.                                 |
 | Community Development                       | Enable members to interact by allowing profile visits and forum posting, fostering a sense of community engagement and user interaction.   |
 
@@ -315,12 +315,17 @@ In the test_forms.py file, various scenarios are tested for different forms, inc
 Validator testing ensures that the HTML, CSS, and JavaScript used in the project meet web standards.
 
 ### Lighthouse
+Warnings due to 3rd party cookies - in this case Cloudinary. As well as large images when uploading images to Cloudinary. Resizing images automatically is possible, but I ran out of time to make it work - however, I will look into it further in the future.
+
+![Lighthouse](/static/images/readme_files/lighthouse.png)
 
 ### W3C Validator
 No errors.
 ![HTMLChecker](/static/images/readme_files/htmlchecker.png)
 
 ### CSS Validator
+No errors.
+![Jigsawt](/static/images/readme_files/jigsaw.png)
 
 ## Code Institute - CI Python Linter
 No errors.
