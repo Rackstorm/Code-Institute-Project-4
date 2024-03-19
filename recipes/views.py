@@ -132,6 +132,7 @@ class PostSearch(View):
         context = {
             "form": form,
             "results": results,
+            "query": query,
         }
         return render(request, "post_search.html", context)
 

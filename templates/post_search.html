@@ -12,15 +12,6 @@
     </div>
     <hr>
 
-    <!-- Display a list of categories -->
-    <h3>Categories:</h3>
-    <ul>
-        {% for categorys in categories %}
-        <!-- Each category is a link with a query parameter for filtering by category -->
-        <li><a href="?category={{ category.id }}">{{ category.name }}</a></li>
-        {% endfor %}
-    </ul>
-
     <!-- Display search results if any -->
     {% if results %}
     <h3>Results:</h3>
@@ -48,8 +39,11 @@
     </div>
     {% endfor %}
     {% else %}
+    <!-- Check if a search query has been submitted -->
+    {% if query %}
     <!-- Display a message if no recipes are found -->
     <p>No recipes found.</p>
+    {% endif %}
     {% endif %}
 </div>
 {% endblock content %}

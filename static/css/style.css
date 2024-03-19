@@ -14,7 +14,8 @@ body {
 
 .container {
     overflow: visible;
-    padding-top: 10px;
+    padding-top: 0px;
+    width: 100%;
 }
 
 .navbar {
@@ -42,6 +43,7 @@ body {
 }
 
 
+
 .bg-custom, .custom-navbar {
         background-repeat: no-repeat;
         color: white;
@@ -63,6 +65,12 @@ body {
     font-size: 1.5em;
 }
 
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+}
 .red-o {
     color: #fff5f8;
 }
@@ -111,6 +119,8 @@ body {
     height: auto;
     width: 100%;
     background-color: #ffe6ed;
+    padding: 10px;
+    
 }
 
 .masthead-text {
@@ -121,10 +131,12 @@ body {
 
 .masthead-image {
     position: relative;
+    margin: auto;
     overflow: hidden;
-    border-radius: 50%;
     background-color: #ffe6ed;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 50%;
+    height: auto%;
 }
 
 .post-link {

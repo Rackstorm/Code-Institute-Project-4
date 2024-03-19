@@ -7,7 +7,7 @@ from .models import Category, Comment, Post, Profile
 
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
-    """ Custom admin interface for the Post model. """
+    """ Custom admin interface for the Post model. Code used from the Code Institute's I think, Therefore I blog and has been modified. """
     list_display = ('title', 'slug', 'status',
                     'created_on', 'get_category_title')
     search_fields = ['title', 'content', 'category__title']
@@ -31,7 +31,7 @@ class PostAdmin(SummernoteModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    """ Custom admin interface for the Comment model """
+    """ Custom admin interface for the Comment model Code used from the Code Institute's I think, Therefore I blog and has been modified. """
     list_display = ('name', 'body', 'post', 'created_on', 'approved')
     list_filter = ('approved', 'created_on')
     search_fields = ('name', 'email', 'body')

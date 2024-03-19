@@ -270,7 +270,11 @@ In the test_forms.py file, various scenarios are tested for different forms, inc
 Validator testing ensures that the HTML, CSS, and JavaScript used in the project meet web standards.
 
 ### Lighthouse
-### W3 Validator
+
+### W3C Validator
+No errors.
+![HTMLChecker](/static/images/readme_files/htmlchecker.png)
+
 ### CSS Validator
 
 ## Code Institute - CI Python Linter
